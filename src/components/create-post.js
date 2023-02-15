@@ -10,7 +10,6 @@ export default function CreatePost() {
         if(post.value) {
             setPosts([...posts, <Post content={post.value} key={posts.length} />]);
             post.value = ''
-      
         }   
     }
     return(
