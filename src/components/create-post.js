@@ -6,12 +6,10 @@ import Post from './post'
 export default function CreatePost() {
     const [posts, setPosts] = useState([]);
     function newPost(e) {
-        const post = document.getElementById('postBox').value;
+        const post = document.getElementById('postBox');
         if(post) {
-            let tempPosts = posts;
-            tempPosts.push(<Post content={post}/>)
-            setPosts(tempPosts);
-            console.log(posts)
+            setPosts([... posts, <Post content={post.value} key={posts.length}/>])
+            post.value = ''
         }   
     }
     return(
