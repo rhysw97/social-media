@@ -1,13 +1,17 @@
-import React from 'react'
+import {useState} from "react";
 
-export default function Post() {
-    function postClick(e) {
-        document.getElementById
-    }
+export default function Post(props) {
+    
+    const [likes, updateLikes] = useState(0)
     return(
         <div>
-            <input type="text" placeholder="What is on your mind" />
-            <p onclick={postClick}>Post</p>
+            <p>{props.content}</p>
+            <div>
+                <p onClick={() => {
+                    updateLikes(likes++)
+                }}>Like</p>
+                <p>{likes}</p>
+            </div>
         </div>
     )
 }
