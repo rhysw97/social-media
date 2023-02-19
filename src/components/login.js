@@ -9,20 +9,20 @@ export default function Login() {
         const email = emailInput.value
         const password = passwordInput.value
 
-        console.log(email)
+       // console.log(email)
 
         emailInput.value = ''
         passwordInput.value = ''
 
-        fetch('localhost:5000/login', {
+        fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             //sends as JSON string to backend
             body: JSON.stringify({
-              email: emailInput.value,
-              password: passwordInput.value 
+              email: email,
+              password: password
             })
         })
         
