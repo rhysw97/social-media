@@ -16,8 +16,18 @@ export default function Register() {
                 </label>
 
                 <label>
+                    Date Of Birth
+                    <input id="dob" type="date"/>
+                </label>
+
+                <label>
                     Password
-                    <input id="username" type="password"/>
+                    <input id="password" type="password"/>
+                </label>
+
+                <label>
+                    Confirm Password
+                    <input id="confirm-password" type="password"/>
                 </label>
             </form>
         </div>
