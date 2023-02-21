@@ -25,7 +25,6 @@ export default function Register() {
         passwordValid: false,
         passwordsMatch: false
     }
-  
 
      //sends data submitted to backend. 
      const handleUsername = (event) => {
@@ -43,27 +42,19 @@ export default function Register() {
          //check if date of birth is at least 18 years before current date
 
       };
-    
+      
       const handlePassword = (event) => {
-        setPassword(event.target.value);
-        const passwordValidation = {
-            moreThan8: false
-
-        }
-        if(password > 8) {
-    
-        }
-        if(confirmPassword === password) {
-            validation.passwordsMatch = true;
-        }
+       setPassword(event.target.value)
+        validation.passwordsMatch = password === confirmPassword? true: false
+        console.log(validation.passwordsMatch)
       };
 
       const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value);
         //check if password is equal to other password
-        if(confirmPassword === password) {
-            validation.passwordsMatch = true;
-        }
+        
+        validation.passwordsMatch = password === confirmPassword? true: false
+        console.log(validation.passwordsMatch)
       };
     
       const handleSubmit = (event) => {
