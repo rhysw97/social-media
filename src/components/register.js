@@ -22,6 +22,7 @@ export default function Register() {
     const validation = {
         email: false,
         dateOfBirth: false,
+        passwordValid: false,
         passwordsMatch: false
     }
   
@@ -45,16 +46,29 @@ export default function Register() {
     
       const handlePassword = (event) => {
         setPassword(event.target.value);
+        const passwordValidation = {
+            moreThan8: false
+
+        }
+        if(password > 8) {
+    
+        }
+        if(confirmPassword === password) {
+            validation.passwordsMatch = true;
+        }
       };
 
       const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value);
         //check if password is equal to other password
+        if(confirmPassword === password) {
+            validation.passwordsMatch = true;
+        }
       };
     
       const handleSubmit = (event) => {
         event.preventDefault();
-        if(validation.dateOfBirth && validation.email && validation.passwordsMatch) {
+        if(validation.dateOfBirth && validation.email && validation.passwordsMatch && validation.passwordValid) {
             postRequest('register', { username, email, dateOfBirth,password });
         }
       };
