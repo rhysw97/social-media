@@ -14,43 +14,32 @@ export default function Password(props) {
 
     const regexs = {
 
-        oneCap: /A-Z/,
-        oneLower: /a-z/,
-        oneSpecial: / [ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~\[\]]+/,
+        oneCap: /[A-Z]/,
+        oneLower: /[a-z]/,
+        oneSpecial: /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~\[\]]/,
         oneNumber: /\d+/,
     }
     const passwordRequirements = new Set()
-    
+
     const passwordMessages = {
         eightOrMore: <p>eight or more characters</p>,
         oneCap: <p>One or more capital</p>,
         oneLower: <p>One or more lowercase</p>,
         oneSpecial: <p>One or more special character</p>,
         oneNumber: <p>One or more number</p>
-
     }
 
 
     const handlePassword = (event) => {
         setPassword(event.target.value)
-        passwordsMatch = password === confirmPassword? true: false
-        Object.keys(regexs).forEach(key => {
-            if(regexs[key].test(password)) {
-                setIsValid(currentIsValid => {
-                    currentIsValid[key] = true;
-                    return currentIsValid
-                })
-            } else {
-                setIsValid(currentIsValid => {
-                    currentIsValid[key] = false;
-                    return currentIsValid
-                })
-            }
-            console.log(key)
-            console.log(isValid[key])
-        })
-        console.log(password.length)
-        if(password.length >= 8) {
+        passwordsMatch = event.target.value === confirmPassword? true: false
+        const isValid = Object.keys(regexs).reduce((result, key) => {
+            result[key] = regexs[key].test(event.target.value)
+            return result;
+        }, {});
+        setIsValid(isValid)
+
+        if(event.target.value.length >= 8) {
             setIsValid(currentIsValid => {
                 currentIsValid.eightOrMore = true;
                 return currentIsValid
@@ -61,8 +50,14 @@ export default function Password(props) {
                 return currentIsValid
             })
         }
-    
-
+        console.log(isValid)
+        Object.keys(isValid).forEach(key => {
+            if(isValid[key]) {
+                passwordRequirements.add(passwordMessages[key])
+            } else {
+                passwordRequirements.delete(passwordMessages[key])
+            }
+        })
     };
 
     const handleConfirmPassword = (event) => {
@@ -83,21 +78,7 @@ export default function Password(props) {
                 onChange={handlePassword}
             />
             <div>
-                {!isValid.eightOrMore &&
-                    <p>8 or more than characters</p>
-                }
-                { !isValid.oneCap &&
-                    <p>At least one capital  </p>
-                }
-                {!isValid.oneLower &&
-                    <p>At least one lowercase</p>
-                }
-                {!isValid.oneNumber &&
-                    <p>At least one digit</p>
-                }
-                {!isValid.oneSpecial &&
-                    <p>At least one special character</p>
-                }
+              {passwordRequirements}
             </div>
             
         </div>
