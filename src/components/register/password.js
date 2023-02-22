@@ -4,42 +4,62 @@ export default function Password(props) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     let passwordsMatch = false;
+    const [isValid, setIsValid] = useState({
+        eightOrMore: false,
+        oneCap: false,
+        oneLower: false,
+        oneSpecial: false,
+        oneNumber: false
+    })
 
     const regexs = {
 
-        oneCap: /[A-Z]+/,
-        oneLower: /[a-z]+/,
-        oneSpecial: /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]]+/,
-        oneNumber: /[0-9]+/,
+        oneCap: /A-Z/,
+        oneLower: /a-z/,
+        oneSpecial: / [ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~\[\]]+/,
+        oneNumber: /\d+/,
     }
-    const passwordRequirements = []
+    const passwordRequirements = new Set()
+    
+    const passwordMessages = {
+        eightOrMore: <p>eight or more characters</p>,
+        oneCap: <p>One or more capital</p>,
+        oneLower: <p>One or more lowercase</p>,
+        oneSpecial: <p>One or more special character</p>,
+        oneNumber: <p>One or more number</p>
 
-    const isValid = {
-        eightOrMore: false,
-        oneCap: null,
-        oneLower: null,
-        oneSpecial: null,
-        oneNumber: null
     }
+
 
     const handlePassword = (event) => {
         setPassword(event.target.value)
         passwordsMatch = password === confirmPassword? true: false
         Object.keys(regexs).forEach(key => {
             if(regexs[key].test(password)) {
-                isValid[key] = true;
+                setIsValid(currentIsValid => {
+                    currentIsValid[key] = true;
+                    return currentIsValid
+                })
             } else {
-                isValid[key] = false;
-                
+                setIsValid(currentIsValid => {
+                    currentIsValid[key] = false;
+                    return currentIsValid
+                })
             }
             console.log(key)
             console.log(isValid[key])
         })
         console.log(password.length)
         if(password.length >= 8) {
-            isValid.eightOrMore = true
+            setIsValid(currentIsValid => {
+                currentIsValid.eightOrMore = true;
+                return currentIsValid
+            })
         } else {
-            isValid.eightOrMore = false
+            setIsValid(currentIsValid => {
+                currentIsValid.eightOrMore = false;
+                return currentIsValid
+            })
         }
     
 
