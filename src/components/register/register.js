@@ -17,7 +17,8 @@ export default function Register() {
     const usernameRef = useRef();
     const emailRef = useRef();
     const dateOfBirthRef = useRef();
-    let password;
+    const [userPassword, setUserPassword] = useState();
+    const [currentIsValid, setCurrentIsValid] = useState();
 
     const validation = {
         email: false,
@@ -28,16 +29,17 @@ export default function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        
+        
 
-        const data = { 
-            username: usernameRef.target.value, 
-            email: usernameRef.target.value,
-            dateOfBirth: dateOfBirthRef.target.value,
-            password
-        };
-
-        if(validation.dateOfBirth && validation.email && validation.passwordsMatch && validation.passwordValid) {
-           postRequest('register', data)
+        if(currentIsValid && Object.values(validation).every(value => value)) {
+            const data = { 
+                username: usernameRef.target.value, 
+                email: usernameRef.target.value,
+                dateOfBirth: dateOfBirthRef.target.value,
+                password: userPassword
+            };
+            postRequest('register', data)
         }
     };
 
@@ -68,7 +70,7 @@ export default function Register() {
                         ref={dateOfBirthRef}
                     />
                 </div>
-                <Password/>
+                <Password passwordState={setUserPassword} isValidState={setCurrentIsValid}/>
                 <button type="submit">Submit</button>
             </form>
        </div>

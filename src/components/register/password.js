@@ -4,6 +4,7 @@ export default function Password(props) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     let passwordsMatch = false;
+    const [passwordRequirements, setPasswordRequirements] = useState([])
     const [isValid, setIsValid] = useState({
         eightOrMore: false,
         oneCap: false,
@@ -13,22 +14,31 @@ export default function Password(props) {
     })
 
     const regexs = {
-
+        eightOrMore: /.{8,}/,
         oneCap: /[A-Z]/,
         oneLower: /[a-z]/,
-        oneSpecial: /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~\[\]]/,
+        oneSpecial: /[ `!@#$%^&*()_+\-={};':"\|,.<>\/?~\[\]]/,
         oneNumber: /\d+/,
     }
-    const passwordRequirements = new Set()
+ 
 
     const passwordMessages = {
-        eightOrMore: <p>eight or more characters</p>,
-        oneCap: <p>One or more capital</p>,
-        oneLower: <p>One or more lowercase</p>,
-        oneSpecial: <p>One or more special character</p>,
-        oneNumber: <p>One or more number</p>
+        eightOrMore: "eight or more characters",
+        oneCap: "One or more capital",
+        oneLower: "One or more lowercase",
+        oneSpecial: "One or more special character",
+        oneNumber: "One or more number"
     }
 
+    const checkRequirementsMet = (requirements, currentPassword, currentConfirmPassword) => {
+        if(currentPassword === currentConfirmPassword) {
+            const validPassword = Object.values(requirements).every(value => value)
+            if (validPassword) {
+                props.setCurrentIsValid(true)
+                props.setCurrentPassword(password)
+            }
+        }
+    }
 
     const handlePassword = (event) => {
         setPassword(event.target.value)
@@ -39,23 +49,14 @@ export default function Password(props) {
         }, {});
         setIsValid(isValid)
 
-        if(event.target.value.length >= 8) {
-            setIsValid(currentIsValid => {
-                currentIsValid.eightOrMore = true;
-                return currentIsValid
-            })
-        } else {
-            setIsValid(currentIsValid => {
-                currentIsValid.eightOrMore = false;
-                return currentIsValid
-            })
-        }
-        console.log(isValid)
         Object.keys(isValid).forEach(key => {
-            if(isValid[key]) {
-                passwordRequirements.add(passwordMessages[key])
+            console.log(key)
+            if(!isValid[key]) {
+                if(!passwordRequirements.includes(passwordMessages[key])) {
+                    setPasswordRequirements(requirements => [...requirements, passwordMessages[key]])
+                }
             } else {
-                passwordRequirements.delete(passwordMessages[key])
+                setPasswordRequirements(requirements => requirements.filter(message => message !== passwordMessages[key]))
             }
         })
     };
@@ -63,9 +64,13 @@ export default function Password(props) {
     const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value);
         //check if password is equal to other password
-        passwordsMatch = password === confirmPassword? true: false
-        
+        passwordsMatch = password === event.target.value? true: false
+        if(passwordsMatch && checkRequirementsMet(isValid)) {
+            props.setConfirmPassword(password)
+            props.setIsValid(isValid)
+        }
     };
+
 
     return (
     <div>
@@ -78,7 +83,7 @@ export default function Password(props) {
                 onChange={handlePassword}
             />
             <div>
-              {passwordRequirements}
+              {passwordRequirements.map((requirement, index) => <p key={index}>{requirement}</p>)}
             </div>
             
         </div>
