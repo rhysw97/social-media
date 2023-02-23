@@ -21,7 +21,6 @@ export default function Password(props) {
         oneNumber: /\d+/,
     }
  
-
     const passwordMessages = {
         eightOrMore: "eight or more characters",
         oneCap: "One or more capital",
@@ -70,7 +69,6 @@ export default function Password(props) {
             props.setIsValid(isValid)
         }
     };
-
 
     return (
     <div>
