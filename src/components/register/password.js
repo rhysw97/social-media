@@ -49,7 +49,6 @@ export default function Password(props) {
         setIsValid(isValid)
 
         Object.keys(isValid).forEach(key => {
-            console.log(key)
             if(!isValid[key]) {
                 if(!passwordRequirements.includes(passwordMessages[key])) {
                     setPasswordRequirements(requirements => [...requirements, passwordMessages[key]])
@@ -58,16 +57,12 @@ export default function Password(props) {
                 setPasswordRequirements(requirements => requirements.filter(message => message !== passwordMessages[key]))
             }
         })
+        checkRequirementsMet(isValid, event.target.value, confirmPassword)
     };
 
     const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value);
-        //check if password is equal to other password
-        passwordsMatch = password === event.target.value? true: false
-        if(passwordsMatch && checkRequirementsMet(isValid)) {
-            props.setConfirmPassword(password)
-            props.setIsValid(isValid)
-        }
+        checkRequirementsMet(isValid, password, event.target.value)
     };
 
     return (
