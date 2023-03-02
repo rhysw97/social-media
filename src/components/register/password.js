@@ -3,7 +3,6 @@ import React, {useState} from "react";
 export default function Password(props) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    let passwordsMatch = false;
     const [passwordRequirements, setPasswordRequirements] = useState([])
     const [isValid, setIsValid] = useState({
         eightOrMore: false,
@@ -12,6 +11,8 @@ export default function Password(props) {
         oneSpecial: false,
         oneNumber: false
     })
+    
+    const [passwordMatchMessage, setPasswordMatchMessage] = useState();
 
     const regexs = {
         eightOrMore: /.{8,}/,
@@ -31,17 +32,20 @@ export default function Password(props) {
 
     const checkRequirementsMet = (requirements, currentPassword, currentConfirmPassword) => {
         if(currentPassword === currentConfirmPassword) {
+            setPasswordMatchMessage(null)
             const validPassword = Object.values(requirements).every(value => value)
             if (validPassword) {
-                props.setCurrentIsValid(true)
-                props.setCurrentPassword(password)
+                props.setIsPasswordValid(true)
+                props.setPaswordState(password)
             }
-        }
+        } else {
+            setPasswordMatchMessage(<p>Passwords must match</p>)
+        } 
+        console.log(passwordMatchMessage)
     }
 
     const handlePassword = (event) => {
         setPassword(event.target.value)
-        passwordsMatch = event.target.value === confirmPassword? true: false
         const isValid = Object.keys(regexs).reduce((result, key) => {
             result[key] = regexs[key].test(event.target.value)
             return result;
@@ -63,6 +67,7 @@ export default function Password(props) {
     const handleConfirmPassword = (event) => {
         setConfirmPassword(event.target.value);
         checkRequirementsMet(isValid, password, event.target.value)
+        
     };
 
     return (
@@ -81,13 +86,14 @@ export default function Password(props) {
             
         </div>
         <div>
-            <label htmlFor="confirmPassword">Password</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
                 id="confirmPassword"
                 type="password"
                 value={confirmPassword}
                 onChange={handleConfirmPassword}
             />
+            {passwordMatchMessage}
         </div>
     </div>
     )
