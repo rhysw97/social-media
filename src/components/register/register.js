@@ -9,14 +9,14 @@ import Password from "./password.js";
 
 export default function Register() {
     const usernameRef = useRef();
-    const emailRef = useRef();
+    const [email, setEmail] = useState();
     const [dateOfBirth, setDateOfBirth] = useState();
     const [userPassword, setUserPassword] = useState();
     const [currentIsValid, setCurrentIsValid] = useState();
     const [ageMessage, setAgeMessage]  = useState();
     const [emailMessage, setEmailMessage] = useState()
-    let validAge = false;
-    let emailValid = false;
+    const [validAge, setValidAge] = useState();
+    const [emailValid, setEmailValid] = useState();
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
     function findAge(dob) {
@@ -39,8 +39,10 @@ export default function Register() {
     }
 
     const handleEmail = event => {
-        emailValid = (emailRegex.test(event.target.value))
+        setEmailValid(currentEmailValid => currentEmailValid = emailRegex.test(event.target.value))
+        console.log(emailValid)
         if(emailValid) {
+            setEmail(event.target.value)
             setEmailMessage(null)
         } else {
             setEmailMessage(<p>Not a valid email</p>)
@@ -50,22 +52,27 @@ export default function Register() {
     const handleDateOfBirth = (event) => {
         setDateOfBirth(event.target.value)
         const userAge = findAge(event.target.value);
+        console.log(validAge)
         if(userAge >= 18) {
-            validAge = true;
+            setValidAge(currentValidAge => currentValidAge = true);
             setAgeMessage(null)
         } else {
-            validAge = false;
+            setValidAge(currentValidAge => currentValidAge = false);
             setAgeMessage(<p>You must be 18 or over to register</p>)
         }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
+        console.log(`Current is valid: ${currentIsValid}`)
+        console.log(`age: ${validAge}`)
+        console.log(`email: ${emailValid}`)
         if(currentIsValid && validAge && emailValid) {
+            console.log(usernameRef)
             const data = { 
-                username: usernameRef.target.value, 
-                email: usernameRef.target.value,
+                username: usernameRef.current.value, 
+                email: email,
                 dateOfBirth: dateOfBirth,
                 password: userPassword
             };
@@ -89,7 +96,7 @@ export default function Register() {
                     <input
                         id="email"
                         type="text"
-                        ref={emailRef}
+                        onChange={handleEmail}
                     />
                     {emailMessage}
                 </div>

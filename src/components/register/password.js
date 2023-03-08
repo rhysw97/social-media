@@ -36,7 +36,7 @@ export default function Password(props) {
             const validPassword = Object.values(requirements).every(value => value)
             if (validPassword) {
                 props.setIsPasswordValid(true)
-                props.setPaswordState(password)
+                props.setPasswordState(password)
             }
         } else {
             setPasswordMatchMessage(<p>Passwords must match</p>)
