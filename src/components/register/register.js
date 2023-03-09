@@ -15,6 +15,8 @@ export default function Register() {
     const [currentIsValid, setCurrentIsValid] = useState();
     const [ageMessage, setAgeMessage]  = useState();
     const [emailMessage, setEmailMessage] = useState()
+    const [usernameUsed, setUsernameUsed] = useState()
+    const [emailUsed, setEmailUsed] = useState()
     const [validAge, setValidAge] = useState();
     const [emailValid, setEmailValid] = useState();
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -75,9 +77,31 @@ export default function Register() {
                 dateOfBirth: dateOfBirth,
                 password: userPassword
             };
-            postRequest('register', data)
+            createUser(data)
         }
     };
+
+    async function createUser(data) {
+        const response = await postRequest('register', data)
+
+        if(!response.email) {
+            setEmailUsed(<p>Email already in use</p>) 
+        }  else {
+            setEmailUsed(null) 
+        }
+
+        if(!response.username) {
+            setUsernameUsed(<p>Username already in use</p>) 
+        }  else {
+            setUsernameUsed(null) 
+        }
+
+        if(response.username && response.email) {
+
+        }
+    }
+
+    
 
     return(
        <div>
@@ -89,6 +113,7 @@ export default function Register() {
                         type="text"
                         ref={usernameRef}
                     />
+                    {usernameUsed}
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
@@ -97,6 +122,7 @@ export default function Register() {
                         type="text"
                         onChange={handleEmail}
                     />
+                    {emailUsed}
                     {emailMessage}
                 </div>
                 <div>

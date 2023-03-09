@@ -9,5 +9,6 @@ export function postRequest(endpoint: string, data: any) {
         //sends as JSON string to backend
         body: JSON.stringify(data)
     })
-    console.log(data)
+    .then((response) => response.json())
+    .then(data => console.log(data))
 }
