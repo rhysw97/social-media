@@ -69,7 +69,6 @@ export default function Register() {
         console.log(`age: ${validAge}`)
         console.log(`email: ${emailValid}`)
         if(currentIsValid && validAge && emailValid) {
-            console.log(usernameRef)
             const data = { 
                 username: usernameRef.current.value, 
                 email: email,
