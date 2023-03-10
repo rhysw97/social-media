@@ -83,25 +83,25 @@ export default function Register() {
 
     async function createUser(data) {
         const response = await postRequest('register', data)
-
-        if(!response.email) {
+        
+        if(response.email) {
             setEmailUsed(<p>Email already in use</p>) 
-        }  else {
+        } else {
             setEmailUsed(null) 
         }
 
-        if(!response.username) {
+        if(response.username) {
             setUsernameUsed(<p>Username already in use</p>) 
         }  else {
             setUsernameUsed(null) 
         }
 
-        if(response.username && response.email) {
+        console.log(usernameUsed)
+        console.log(emailUsed)
+        if(!response.username && !response.email) {
 
         }
     }
-
-    
 
     return(
        <div>
