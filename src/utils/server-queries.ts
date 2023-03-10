@@ -1,6 +1,6 @@
 
-export function postRequest(endpoint: string, data: any) {
-    fetch(`http://localhost:5000/${endpoint}`, {
+export async function postRequest(endpoint: string, data: any) {
+    const responseData = await fetch(`http://localhost:5000/${endpoint}`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -10,5 +10,6 @@ export function postRequest(endpoint: string, data: any) {
         body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then(data => console.log(data))
+    .then(data => data)
+    return responseData
 }
