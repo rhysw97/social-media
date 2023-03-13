@@ -8,7 +8,9 @@ export default function Post(props) {
             <p>{props.content}</p>
             <div>
                 <p onClick={() => {
-                    setLikes(currentLikes => currentLikes++)
+                    console.log('click')
+                    console.log(likes)
+                    setLikes(currentLikes => currentLikes + 1)
                 }}>Like</p>
                 <p>{likes}</p>
             </div>

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import Password from "./password.js";
-
+import {useNavigate} from "react-router-dom";;
 //check that the username hasn't been taken by sending to backend and checking against db
 
 //check that the email is valid
@@ -20,6 +20,9 @@ export default function Register() {
     const [validAge, setValidAge] = useState();
     const [emailValid, setEmailValid] = useState();
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    const navigate = useNavigate();
+  
+
 
     function findAge(dob) {
         const currentDate = new Date()
@@ -96,10 +99,11 @@ export default function Register() {
             setUsernameUsed(null) 
         }
 
-        console.log(usernameUsed)
-        console.log(emailUsed)
+        console.log('username: ', usernameUsed)
+        console.log('email:', emailUsed)
         if(!response.username && !response.email) {
-
+            console.log('go to posts')
+            navigate('/post')
         }
     }
 
