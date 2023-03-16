@@ -1,6 +1,6 @@
 
 export async function postRequest(endpoint: string, data: any) {
-    const responseData = await fetch(`http://localhost:5000/${endpoint}`, {
+    const responseData = await fetch(`/${endpoint}`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
