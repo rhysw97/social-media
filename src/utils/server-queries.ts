@@ -13,3 +13,9 @@ export async function postRequest(endpoint: string, data: any) {
     .then(data => data)
     return responseData
 }
+
+export async function getRequest(endpoint: string) {
+    const responseData = await fetch(`/${endpoint}`)
+    .then(response => response.json())
+    return responseData
+}
