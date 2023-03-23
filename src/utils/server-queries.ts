@@ -1,6 +1,6 @@
 
 export async function postRequest(endpoint: string, data: any) {
-    const responseData = await fetch(`/${endpoint}`, {
+    const responseData = await fetch(`${endpoint}`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export async function postRequest(endpoint: string, data: any) {
 }
 
 export async function getRequest(endpoint: string) {
-    const responseData = await fetch(`/${endpoint}`)
+    const responseData = await fetch(`${endpoint}`)
     .then(response => response.json())
     return responseData
 }
