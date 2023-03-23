@@ -1,4 +1,7 @@
 import {useState} from "react";
+import UserProfile from "../../data/userProfile";
+
+
 
 export default function Post(props) {
     
