@@ -14,10 +14,11 @@ export default function CreatePost() {
 
             postRequest('/posts', {post: postInputRef.current.value })
             setPosts([...posts, <Post content={postInputRef.current.value} key={posts.length} />]);
-            postInputRef.value = ''
+           
 
             const serverPosts = await getRequest('/recentPosts')
             console.log(serverPosts.data.data)
+            postInputRef.current.value = ''
         }
     }
 
