@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { postRequest } from "../utils/server-queries.ts";
+import { postRequest } from "../../utils/server-queries.ts";
 import {BrowserRouter, useNavigate} from 'react-router-dom';
 
 

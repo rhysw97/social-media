@@ -5,6 +5,7 @@ import UserProfile from '../../data/userProfile';
 
 
 
+
 export default function CreatePost() {
     const [posts, setPosts] = useState([]);
     const postInputRef = useRef()
@@ -12,23 +13,27 @@ export default function CreatePost() {
         console.log(postInputRef.current.value)
         if(postInputRef.current.value) {
 
-            postRequest('/posts', {post: postInputRef.current.value })
+            //const response =  
+            postRequest('posts', {post: postInputRef.current.value })
             setPosts([...posts, <Post content={postInputRef.current.value} key={posts.length} />]);
            
 
-            const serverPosts = await getRequest('/recentPosts')
-            console.log(serverPosts.data.data)
+            const serverPosts = await getRequest('recentPosts')
+            //console.log(serverPosts.data)
             postInputRef.current.value = ''
         }
     }
 
     useEffect( () => {
-        
-       const serverPosts = getRequest('/recentPosts')
-      // console.log(serverPosts)
+        getRecentPosts()
+    
        //setPosts([serverPosts])
-    })
 
+    })
+    async function getRecentPosts(){
+        const serverPosts = await getRequest('recentPosts')
+        console.log(serverPosts.data)
+    }
     return(
         <div>
             {posts}

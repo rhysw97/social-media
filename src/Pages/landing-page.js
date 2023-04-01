@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Login from "../components/login";
+import Login from "../components/Login/login";
 
 export default function LandingPage() {
    
