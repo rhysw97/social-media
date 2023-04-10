@@ -2,7 +2,7 @@ import React, {useState, useRef} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import Password from "./password.js";
 import {useNavigate} from "react-router-dom";
-import UserProfile from "../../data/userProfile.js";
+//import UserProfile from "../../data/userProfile.js";
 //check that the username hasn't been taken by sending to backend and checking against db
 
 //check that the email is valid
@@ -102,7 +102,7 @@ export default function Register() {
 
         if(!response.username && !response.email) {
             navigate('/post')
-            UserProfile.setName(usernameRef)
+           // UserProfile.setName(usernameRef)
         }
     }
 

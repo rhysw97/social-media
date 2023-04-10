@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import Post from '../post-system/post'
 import { postRequest, getRequest } from '../../utils/server-queries.ts';
 import UserProfile from '../../data/userProfile';
+import Logout from '../Login/logout';
 
 
 
@@ -37,6 +38,7 @@ export default function CreatePost() {
     }
     return(
         <div>
+            <Logout />
             {posts}
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
