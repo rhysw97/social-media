@@ -100,8 +100,6 @@ export default function Register() {
             setUsernameUsed(null) 
         }
 
-        console.log('username: ', usernameUsed)
-        console.log('email:', emailUsed)
         if(!response.username && !response.email) {
             navigate('/post')
             UserProfile.setName(usernameRef)
