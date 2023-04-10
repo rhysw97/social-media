@@ -10,17 +10,18 @@ export default function CreatePost() {
     const [posts, setPosts] = useState([]);
     const postInputRef = useRef()
    async function newPost(e) {
-        console.log(postInputRef.current.value)
+        
         if(postInputRef.current.value) {
-
-            //const response =  
-            postRequest('posts', {post: postInputRef.current.value })
-            setPosts([...posts, <Post content={postInputRef.current.value} key={posts.length} />]);
+            const data = {post: postInputRef.current.value}
+            console.log(data)
+            postRequest('posts', data)
+            //setPosts([...posts, <Post content={postInputRef.current.value} key={posts.length} />]);
            
 
             const serverPosts = await getRequest('recentPosts')
             //console.log(serverPosts.data)
             postInputRef.current.value = ''
+            const recentPosts = await getRecentPosts()
         }
     }
 
