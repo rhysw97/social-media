@@ -5,9 +5,10 @@ import UserProfile from "../../data/userProfile";
 
 export default function Post(props) {
     
-    const [likes, setLikes] = useState(0)
+    const [likes, setLikes] = useState(props)
     return(
         <div>
+            <p>{props.username}</p>
             <p>{props.content}</p>
             <div>
                 <p onClick={() => {
