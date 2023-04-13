@@ -3,11 +3,11 @@ import UserProfile from "../../data/userProfile";
 
 
 
+
 export default function Post(props) {
     
     const handleLikes = () => {
-        console.log('click')
-        console.log(likes)
+   
         setLikes(currentLikes => currentLikes + 1)
     }
     const [likes, setLikes] = useState(props.likes)

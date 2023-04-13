@@ -35,8 +35,6 @@ export default function CreatePost() {
         setPosts([])
         serverPosts.forEach(post => {
             setPosts(currentPosts => [...currentPosts, {username: post.postedBy, content: post.message,likes: post.likes}])
-            console.log(post)
-            console.log(post.postedBy)
         });
     }
 

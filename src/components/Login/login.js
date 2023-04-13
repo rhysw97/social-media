@@ -23,7 +23,7 @@ export default function Login() {
         handleLoginResponse()
       };
 
-     async function handleLoginResponse() {
+    async function handleLoginResponse() {
         const response = await postRequest('login', { email, password });
         console.log(response)
         if(response) {
@@ -32,7 +32,7 @@ export default function Login() {
         } else {
             setLoginMessage(currentMessage => <p>Email or password could not be verfied. Please check they have been inputted correctly or click below to create an account</p>)
         }
-      }
+    }
 
     return(
        <div>
