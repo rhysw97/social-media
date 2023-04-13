@@ -10,36 +10,43 @@ import Logout from '../Login/logout';
 export default function CreatePost() {
     const [posts, setPosts] = useState([]);
     const postInputRef = useRef()
-   async function newPost(e) {
+    async function newPost(e) {
         
         if(postInputRef.current.value) {
             const data = {post: postInputRef.current.value}
             console.log(data)
-            postRequest('posts', data)
-            //setPosts([...posts, <Post content={postInputRef.current.value} key={posts.length} />]);
+            postRequest('posts', data);
            
 
             const serverPosts = await getRequest('recentPosts')
-            //console.log(serverPosts.data)
+            console.log(serverPosts.data)
             postInputRef.current.value = ''
             const recentPosts = await getRecentPosts()
         }
     }
 
-    useEffect( () => {
+    useEffect( () => {  
         getRecentPosts()
-    
-       //setPosts([serverPosts])
+    },[])
 
-    })
     async function getRecentPosts(){
         const serverPosts = await getRequest('recentPosts')
-        console.log(serverPosts.data)
+        console.log(serverPosts)
+        setPosts([])
+        serverPosts.forEach(post => {
+            setPosts(currentPosts => [...currentPosts, {username: post.postedBy, content: post.message}])
+            console.log(post)
+            console.log(post.postedBy)
+        });
     }
+
     return(
         <div>
             <Logout />
-            {posts}
+            <div>
+                {//posts.map((post, index) => <Post key={index} content={post.contents} username={post.username} ></Post>)
+                }
+            </div>
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
                 <p onClick={newPost}>Post</p>
