@@ -34,18 +34,19 @@ export default function CreatePost() {
         console.log(serverPosts)
         setPosts([])
         serverPosts.forEach(post => {
-            setPosts(currentPosts => [...currentPosts, {username: post.postedBy, content: post.message}])
+            setPosts(currentPosts => [...currentPosts, {username: post.postedBy, content: post.message,likes: post.likes}])
             console.log(post)
             console.log(post.postedBy)
         });
     }
 
+    
+
     return(
         <div>
             <Logout />
             <div>
-                {//posts.map((post, index) => <Post key={index} content={post.contents} username={post.username} ></Post>)
-                }
+                {posts.map((post, index) => <Post key={index} content={post.content} username={post.username} likes={post.likes} />)}
             </div>
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
