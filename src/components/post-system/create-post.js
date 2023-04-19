@@ -18,7 +18,7 @@ export default function CreatePost() {
             postRequest('posts', data);
            
 
-            const serverPosts = await getRequest('recentPosts')
+            const serverPosts = await getRequest('posts/recentPosts')
             console.log(serverPosts.data)
             postInputRef.current.value = ''
             const recentPosts = await getRecentPosts()
@@ -30,7 +30,7 @@ export default function CreatePost() {
     },[])
 
     async function getRecentPosts(){
-        const serverPosts = await getRequest('recentPosts')
+        const serverPosts = await getRequest('posts/recentPosts')
         console.log(serverPosts)
         setPosts([])
         serverPosts.forEach(post => {
