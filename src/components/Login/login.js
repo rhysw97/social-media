@@ -35,10 +35,11 @@ export default function Login() {
     }
 
     return(
-       <div>
+       <div className="flex flex-col items-center gap-30">
           <h1>Login</h1>
-           <form onSubmit={handleSubmit}>
-                <div>
+           <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
+                <div
+                className="mb-10">
                     <label htmlFor="email">Email</label>
                     <input
                         id="email"
@@ -47,7 +48,7 @@ export default function Login() {
                         onChange={handleEmail}
                     />
                 </div>
-                <div>
+                <div  className="mb-10">
                     <label htmlFor="password">Password</label>
                     <input
                         id="password"

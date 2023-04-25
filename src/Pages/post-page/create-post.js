@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import Post from '../post-system/post'
+import Post from './post'
 import { postRequest, getRequest } from '../../utils/server-queries.ts';
 import UserProfile from '../../data/userProfile';
-import Logout from '../Login/logout';
+import Logout from '../../components/Login/logout';
 
 
 
@@ -42,9 +42,13 @@ export default function CreatePost() {
 
     return(
         <div>
+            <header>
+                <h1 className='text-2xl'>Feed</h1>
+            </header>
             <Logout />
+            
             <div>
-                {posts.map((post, index) => <Post key={index} content={post.content} username={post.username} likes={post.likes} />)}
+                {posts.map((post, index) => <Post key={post._id} content={post.content} username={post.username} likes={post.likes} />)}
             </div>
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
