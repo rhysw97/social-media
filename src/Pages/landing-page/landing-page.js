@@ -11,7 +11,7 @@ export default function LandingPage() {
             <header className="bg-green-600 py-10 mt-5">
             <h1 className="text-white text-center">Gig Mates</h1>
             </header>
-            <div className=" mt-10" styles={{background: `url(${backgroundImage})`}}>
+            <div className=" mt-10 bg-slate-900 w-480" styles={{background: `url(${backgroundImage})`}}>
                 <Login></Login>
             </div>
         </div>

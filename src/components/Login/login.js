@@ -4,19 +4,24 @@ import {BrowserRouter, useNavigate} from 'react-router-dom';
 
 
 export default function Login() {
+    //variables store state of login data 
+    //this means it wont be deleted when the login component reloads itself
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginMessage, setLoginMessage] = useState()
+
+    //stores navigation hook to allow moving to other pages
     const navigate = useNavigate()
     
-    //sends data submitted to backend. 
+    //sets email state based 
     const handleEmail = (event) => {
         setEmail(event.target.value);
       };
+      
     
-      const handlePassword = (event) => {
+    const handlePassword = (event) => {
         setPassword(event.target.value);
-      };
+    };
     
       const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,8 +40,8 @@ export default function Login() {
     }
 
     return(
-       <div className="flex flex-col items-center gap-30">
-          <h1>Login</h1>
+       <div className="flex flex-col items-center gap-30 mt-20 backdrop-grayscale">
+          <h1 className="text-4xl mb-20">Login</h1>
            <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
                 <div
                 className="mb-10">
