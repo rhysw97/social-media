@@ -4,19 +4,24 @@ import {BrowserRouter, useNavigate} from 'react-router-dom';
 
 
 export default function Login() {
+    //variables store state of login data 
+    //this means it wont be deleted when the login component reloads itself
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginMessage, setLoginMessage] = useState()
+
+    //stores navigation hook to allow moving to other pages
     const navigate = useNavigate()
     
-    //sends data submitted to backend. 
+    //sets email state based 
     const handleEmail = (event) => {
         setEmail(event.target.value);
       };
+      
     
-      const handlePassword = (event) => {
+    const handlePassword = (event) => {
         setPassword(event.target.value);
-      };
+    };
     
       const handleSubmit = (event) => {
         event.preventDefault();
