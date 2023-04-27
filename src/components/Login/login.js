@@ -40,7 +40,7 @@ export default function Login() {
     }
 
     return(
-       <div className="flex flex-col items-center gap-30 mt-20 backdrop-grayscale">
+       <div className="bg-green-500 flex flex-col items-center gap-30 mt-20">
           <h1 className="text-4xl mb-20">Login</h1>
            <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
                 <div
