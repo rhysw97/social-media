@@ -108,35 +108,35 @@ export default function Register() {
 
     return(
        <div>
-           <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username</label>
-                    <input
-                        id="username"
-                        type="text"
-                        ref={usernameRef}
-                    />
-                    {usernameUsed}
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        type="text"
-                        onChange={handleEmail}
-                    />
-                    {emailUsed}
-                    {emailMessage}
-                </div>
-                <div>
-                    <label htmlFor="dob">Date Of Birth</label>
-                    <input
-                        id="dob"
-                        type="date"
-                        onChange={handleDateOfBirth}
-                    />
-                    {ageMessage}
-                </div>
+           <form onSubmit={handleSubmit} className="flex flex-col items-center">
+            
+                
+            <input
+                placeholder=""
+                id="username"
+                type="text"
+                ref={usernameRef}
+            />
+            {usernameUsed}
+                
+            <input
+                placeholder="email"
+                id="email"
+                type="text"
+                onChange={handleEmail}
+            />
+            {emailUsed}
+            {emailMessage}
+              
+            <div>
+                <label for="dob">Date Of Birth</label>
+                <input
+                    id="dob"
+                    type="date"
+                    onChange={handleDateOfBirth}
+                />
+                {ageMessage}
+            </div>
                 <Password setPasswordState={setUserPassword} setIsPasswordValid={setCurrentIsValid}/>
                 <button type="submit">Submit</button>
             </form>

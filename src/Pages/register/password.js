@@ -73,8 +73,8 @@ export default function Password(props) {
     return (
     <div>
         <div>
-            <label htmlFor="password">Password</label>
             <input
+            placeholder="password"
                 id="password"
                 type="password"
                 value={password}
@@ -86,8 +86,8 @@ export default function Password(props) {
             
         </div>
         <div>
-            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
+                placeholder="confirm password"
                 id="confirmPassword"
                 type="password"
                 value={confirmPassword}

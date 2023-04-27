@@ -45,8 +45,8 @@ export default function Login() {
            <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
                 <div
                 className="mb-10">
-                    <label htmlFor="email">Email</label>
                     <input
+                        placeholder="email"
                         id="email"
                         type="text"
                         value={email}
@@ -54,8 +54,8 @@ export default function Login() {
                     />
                 </div>
                 <div  className="mb-10">
-                    <label htmlFor="password">Password</label>
                     <input
+                        placeholder="password"
                         id="password"
                         type="password"
                         value={password}
