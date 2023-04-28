@@ -9,7 +9,7 @@ export default function Logout() {
 
     function handleLogoutResponse() {
         postRequest('logout', {});
-        navigate('/')
+        navigate('/')        
     }
 
     return(

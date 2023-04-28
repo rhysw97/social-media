@@ -7,8 +7,6 @@ import Likes from "../../components/Likes/likes"
 
 export default function Post(props) {
     
-    const postId = props.postId;
-    
     return(
         <div className="flex-col">
             <div>
@@ -19,7 +17,7 @@ export default function Post(props) {
             </div>
             <p className="">{props.content}</p>
             <div className="">
-                <Likes likes ={props.likes}></Likes>
+                <Likes likes ={props.likes} postId={props.postId}></Likes>
             </div>
         </div>
     )

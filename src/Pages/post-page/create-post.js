@@ -27,6 +27,7 @@ export default function CreatePost() {
 
     useEffect( () => {  
         getRecentPosts()
+        console.log(posts)
     },[])
 
     async function getRecentPosts(){
@@ -34,7 +35,7 @@ export default function CreatePost() {
         console.log(serverPosts)
         setPosts([])
         serverPosts.forEach(post => {
-            setPosts(currentPosts => [...currentPosts, {username: post.postedBy, content: post.message,likes: post.likes}])
+            setPosts(currentPosts => [...currentPosts, {id:post._id, username: post.postedBy, content: post.message,likes: post.likes}])
         });
     }
 
@@ -48,7 +49,7 @@ export default function CreatePost() {
             <Logout />
             
             <div>
-                {posts.map((post, index) => <Post key={post._id} content={post.content} username={post.username} likes={post.likes} />)}
+                {posts.map((post, index) => <Post key={post.id} postId={post.id} content={post.content} username={post.username} likes={post.likes} />)}
             </div>
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
