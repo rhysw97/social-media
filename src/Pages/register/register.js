@@ -109,13 +109,14 @@ export default function Register() {
     return(
        <div>
            <form onSubmit={handleSubmit} className="flex flex-col items-center">
-            
+
                 
             <input
                 placeholder=""
                 id="username"
                 type="text"
                 ref={usernameRef}
+                className="border-black border-2 rounded-lg "
             />
             {usernameUsed}
                 
