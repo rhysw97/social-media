@@ -4,14 +4,16 @@ import {useState} from "react";
 
 
 export default function Likes(props) {
-    const [likedby, setLikedBy] = useState([])
-    //if user likes name gets added to array. cannot like again
+    const [likedBy, setLikedBy] = useState([])
+    //if user likes name gets added to array.
+    //if the user clicks when liked 
     //likes is length of array
+    
     const handleLikes = () => {
-   
+        
         setLikes(currentLikes => currentLikes + 1)
-
     }
+
     const [likes, setLikes] = useState(props.likes)
     return(
         <div>

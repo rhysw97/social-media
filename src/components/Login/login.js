@@ -13,10 +13,10 @@ export default function Login() {
     //stores navigation hook to allow moving to other pages
     const navigate = useNavigate()
     
-    //sets email state based 
+    //function to run when user inputs into email field to update the components the 
     const handleEmail = (event) => {
         setEmail(event.target.value);
-      };
+    };
       
     
     const handlePassword = (event) => {
