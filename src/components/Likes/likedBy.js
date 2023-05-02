@@ -1,12 +1,20 @@
 import { useState } from "react"
-export default function likedBy(props) {
+import ModalTemplate from "../UI/modal-template"
+export default function LikedBy(props) {
     const [open, setOpen] = useState(false)
-    const [likedBy, setLikedBy] = useState(props.post.likedBy)
+    const [likedBy, setLikedBy] = useState([])
+
+   /* const listOfUsers = <div>
+        {likedBy.map((user) => {
+            return <p>{user}</p>
+        })}
+    </div>*/
     return(
         <div>
             <button onClick={() => {
                 setOpen(true)
             }}>likedBy</button>
+            <ModalTemplate isOpen={open} setIsOpen={setOpen} content={"hi"} />
         </div>
     )
 }

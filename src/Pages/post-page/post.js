@@ -6,7 +6,9 @@ import Likes from "../../components/Likes/likes"
 
 
 export default function Post(props) {
+    
     const postData = props.post
+    console.log("data", props.post)
     return(
         <div className="flex-col">
             <div>
