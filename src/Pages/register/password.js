@@ -79,6 +79,7 @@ export default function Password(props) {
                 type="password"
                 value={password}
                 onChange={handlePassword}
+                className="border-black border-2 rounded-lg px-2 "
             />
             <div>
               {passwordRequirements.map((requirement, index) => <p key={index}>{requirement}</p>)}
@@ -92,6 +93,7 @@ export default function Password(props) {
                 type="password"
                 value={confirmPassword}
                 onChange={handleConfirmPassword}
+                className="border-black border-2 rounded-lg px-2 "
             />
             {passwordMatchMessage}
         </div>

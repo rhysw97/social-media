@@ -108,15 +108,14 @@ export default function Register() {
 
     return(
        <div>
-           <form onSubmit={handleSubmit} className="flex flex-col items-center">
-
-                
+            <h2 className="text-4xl text-center my-10" >Register</h2>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center">  
             <input
-                placeholder=""
+                placeholder="Username"
                 id="username"
                 type="text"
                 ref={usernameRef}
-                className="border-black border-2 rounded-lg "
+                className="border-black border-2 rounded-lg px-2 "
             />
             {usernameUsed}
                 
@@ -125,16 +124,18 @@ export default function Register() {
                 id="email"
                 type="text"
                 onChange={handleEmail}
+                className="border-black border-2 rounded-lg px-2 my-3"
             />
             {emailUsed}
             {emailMessage}
               
-            <div>
-                <label for="dob">Date Of Birth</label>
+            <div className="flex flex-col">
+                <label for="dob" className="text-center">Date Of Birth</label>
                 <input
                     id="dob"
                     type="date"
                     onChange={handleDateOfBirth}
+                    className="border-black border-2 rounded-lg px-2 m-t mb-3"
                 />
                 {ageMessage}
             </div>
