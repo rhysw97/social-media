@@ -49,7 +49,7 @@ export default function CreatePost() {
             <Logout />
             
             <div>
-                {posts.map((post, index) => <Post key={post.id} postId={post.id} content={post.content} username={post.username} likes={post.likes} />)}
+                {posts.map((post, index) => <Post key={post.id} post={post} />)}
             </div>
             <div>
                 <input id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>

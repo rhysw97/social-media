@@ -5,8 +5,8 @@ import { postRequest } from "../../utils/server-queries.ts";
 
 
 export default function Likes(props) {
-    const [likedBy, setLikedBy] = useState([])
-    const [likes, setLikes] = useState(props.likes)
+    const [likedBy, setLikedBy] = useState(prop.post.likedBy)
+    const [likes, setLikes] = useState(props.post.likes)
     //if user likes name gets added to array.
     //if the user clicks when liked 
     //likes is length of array
@@ -15,8 +15,8 @@ export default function Likes(props) {
         
         setLikes(currentLikes => currentLikes + 1)
         console.log(props.postId)
-        postRequest('posts/likePost', {postId: props.postId})
-
+        postRequest('posts/likePost', {postId: props.post.postId})
+        
     }
 
    

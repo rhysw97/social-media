@@ -6,18 +6,18 @@ import Likes from "../../components/Likes/likes"
 
 
 export default function Post(props) {
-    
+    const postData = props.post
     return(
         <div className="flex-col">
             <div>
-                <p className="">{props.username}</p>
+                <p className="">{postData.username}</p>
                 <div className="border-r-8">
                     <img />
                 </div>
             </div>
-            <p className="">{props.content}</p>
+            <p className="">{postData.content}</p>
             <div className="">
-                <Likes likes ={props.likes} postId={props.postId}></Likes>
+                <Likes likes ={postData.likes} post={postData}></Likes>
             </div>
         </div>
     )
