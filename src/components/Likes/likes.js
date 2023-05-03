@@ -20,8 +20,8 @@ export default function Likes(props) {
         } else {
             //add user to likedBy and add like
             setLikes(currentLikes => currentLikes + 1)
-            console.log('hi',props.post._id)
-           // postRequest('posts/likePost', {postId: props.post._id})
+            console.log('hi',props.post.id)
+            postRequest('posts/likePost', {postId: props.post.id})
         }
     }
 
