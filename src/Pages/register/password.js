@@ -41,7 +41,6 @@ export default function Password(props) {
         } else {
             setPasswordMatchMessage(<p>Passwords must match</p>)
         } 
-        console.log(passwordMatchMessage)
     }
 
     const handlePassword = (event) => {

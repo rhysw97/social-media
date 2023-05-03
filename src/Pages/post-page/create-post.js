@@ -14,12 +14,9 @@ export default function CreatePost() {
         
         if(postInputRef.current.value) {
             const data = {post: postInputRef.current.value}
-            console.log(data)
             postRequest('posts', data);
-           
 
             const serverPosts = await getRequest('posts/recentPosts')
-            console.log(serverPosts.data)
             postInputRef.current.value = ''
             const recentPosts = await getRecentPosts()
         }
@@ -27,12 +24,12 @@ export default function CreatePost() {
 
     useEffect( () => {  
         getRecentPosts()
-        console.log(posts)
+  
     },[])
 
     async function getRecentPosts(){
         const serverPosts = await getRequest('posts/recentPosts')
-        console.log(serverPosts)
+        
         setPosts([])
         serverPosts.forEach(post => {
             setPosts(currentPosts => [...currentPosts, {id:post._id, username: post.postedBy, content: post.message,likes: post.likes, likedBy: post.likedBy}])

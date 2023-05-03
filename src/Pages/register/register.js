@@ -30,7 +30,7 @@ export default function Register() {
         const birthDate = new Date(dob)
         let age = currentDate.getFullYear() - birthDate.getFullYear();
         const month = currentDate.getMonth() - birthDate.getDate();
-        console.log(typeof age)
+     
         if(month < 0 || (month === 0 && currentDate.getDate() < birthDate.getDate)) {
             age--
         }
@@ -46,7 +46,6 @@ export default function Register() {
 
     const handleEmail = event => {
         setEmailValid(currentEmailValid => currentEmailValid = emailRegex.test(event.target.value))
-        console.log(emailValid)
         if(emailValid) {
             setEmail(event.target.value)
             setEmailMessage(null)
@@ -58,7 +57,7 @@ export default function Register() {
     const handleDateOfBirth = (event) => {
         setDateOfBirth(event.target.value)
         const userAge = findAge(event.target.value);
-        console.log(validAge)
+
         if(userAge >= 18) {
             setValidAge(currentValidAge => currentValidAge = true);
             setAgeMessage(null)
@@ -71,9 +70,6 @@ export default function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log(`Current is valid: ${currentIsValid}`)
-        console.log(`age: ${validAge}`)
-        console.log(`email: ${emailValid}`)
         if(currentIsValid && validAge && emailValid) {
             const data = { 
                 username: usernameRef.current.value, 

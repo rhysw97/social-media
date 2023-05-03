@@ -3,7 +3,7 @@ import { postRequest } from "../../utils/server-queries.ts";
 import LikedBy from "./likedBy";
 
 export default function Likes(props) {
-    console.log(props.post)
+    console.table(props.post)
     const [likedBy, setLikedBy] = useState(props.post.likedBy)
     const [likes, setLikes] = useState(props.post.likes)
     //if user likes name gets added to array.
