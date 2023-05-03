@@ -44,7 +44,7 @@ export default function CreatePost() {
     return(
         <div>
             <header>
-                <h1 className='text-2xl'>Feed</h1>
+                <h1 className='text-5xl'>Feed</h1>
             </header>
             <Logout />
             
