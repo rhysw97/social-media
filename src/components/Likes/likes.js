@@ -4,7 +4,6 @@ import LikedBy from "./likedBy";
 
 export default function Likes(props) {
     console.table(props.post)
-    const [likedBy, setLikedBy] = useState(props.post.likedBy)
     const [likes, setLikes] = useState(props.post.likes)
     //if user likes name gets added to array.
     //if the user clicks when liked 
@@ -12,7 +11,7 @@ export default function Likes(props) {
     
     
     const handleLikes = () => {
-        if(likedBy.includes(useContext.username)) {
+        if(props.post.likedBy.includes(useContext.username)) {
             //remove user from likedBy and remove like
             setLikes(currentLikes => currentLikes + 1)
             console.log(props.postId)
@@ -20,7 +19,7 @@ export default function Likes(props) {
         } else {
             //add user to likedBy and add like
             setLikes(currentLikes => currentLikes + 1)
-            console.log('hi',props.post.id)
+            console.log(props.post.id)
             postRequest('posts/likePost', {postId: props.post.id})
         }
     }
@@ -31,7 +30,7 @@ export default function Likes(props) {
             <div>
                 <p onClick={handleLikes}>Like</p>
                 <p>{likes}</p>
-                    <LikedBy likedBy={props.likedBy}/>
+                    <LikedBy likedBy={props.post.likedBy}/>
             </div>
         </div>
     )
