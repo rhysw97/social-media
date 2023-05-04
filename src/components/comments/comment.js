@@ -8,9 +8,9 @@ export default function Comment(props) {
         if(commentInputRef.current.value) {
             const data = {
                 content: commentInputRef.current.value,
-                postd: props.postId,
+                postd: props.id,
             }
-            postRequest('post/comment', data)
+            postRequest('posts/comment', data)
             commentInputRef.current.value = ''
         }
         

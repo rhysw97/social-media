@@ -23,6 +23,8 @@ export default function Post(props) {
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
                 <Comment id={postData.id}/>
+                
+                
             </div>
         </div>
     )

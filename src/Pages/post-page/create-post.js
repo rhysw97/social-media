@@ -16,7 +16,6 @@ export default function CreatePost() {
             const data = {post: postInputRef.current.value}
             postRequest('posts', data);
 
-            const serverPosts = await getRequest('posts/recentPosts')
             postInputRef.current.value = ''
             const recentPosts = await getRecentPosts()
         }

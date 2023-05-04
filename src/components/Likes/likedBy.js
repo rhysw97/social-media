@@ -1,7 +1,7 @@
 import { useState } from "react"
-import ModalTemplate from "../UI/modal-template"
+import Modal from "../UI/modal/modal"
 export default function LikedBy(props) {
-    const [open, setOpen] = useState(false)
+    const [modalActive, setModalActive] = useState(false);
     const [likedBy, setLikedBy] = useState(props.likedBy)
 
    const listOfUsers = <div>
@@ -11,10 +11,8 @@ export default function LikedBy(props) {
     </div>
     return(
         <div>
-            <button onClick={() => {
-                setOpen(true)
-            }}>likedBy</button>
-            <ModalTemplate isOpen={open} setIsOpen={setOpen} content={listOfUsers} />
+            <p className="open-modal" onClick={() => setModalActive(true)}>Instructions</p>
+            <Modal show={modalActive} close={()=> setModalActive(false)}/>
         </div>
     )
 }
