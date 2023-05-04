@@ -11,8 +11,8 @@ export default function LikedBy(props) {
     </div>
     return(
         <div>
-            <p className="open-modal" onClick={() => setModalActive(true)}>Instructions</p>
-            <Modal show={modalActive} close={()=> setModalActive(false)}/>
+            <p className="open-modal" onClick={() => setModalActive(true)}>LikedBy</p>
+            <Modal show={modalActive} close={()=> setModalActive(false)} content={listOfUsers}/>
         </div>
     )
 }
