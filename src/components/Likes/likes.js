@@ -3,11 +3,7 @@ import { postRequest } from "../../utils/server-queries.ts";
 import LikedBy from "./likedBy";
 
 export default function Likes(props) {
-<<<<<<< HEAD
     const [likedBy, setLikedBy] = useState(props.post.likedBy)
-=======
-    console.table(props.post)
->>>>>>> 7766011b9c9658d7e08327c41d60d71067930fa7
     const [likes, setLikes] = useState(props.post.likes)
     //if user likes name gets added to array.
     //if the user clicks when liked 
