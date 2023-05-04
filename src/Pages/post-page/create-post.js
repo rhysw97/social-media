@@ -39,13 +39,13 @@ export default function CreatePost() {
     
 
     return(
-        <div>
-            <header>
+        <div className=''>
+            <header className='flex justify-center'>
                 <h1 className='text-5xl'>Feed</h1>
             </header>
             <Logout />
             
-            <div>
+            <div className=" flex flex-col w-60  mx-auto">
                 {posts.map((post, index) => <Post key={post.id} post={post} />)}
             </div>
             <div>

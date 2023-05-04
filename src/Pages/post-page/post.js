@@ -13,11 +13,11 @@ export default function Post(props) {
 
     return(
         <div className="flex-col">
-            <div>
-                <p className="">{postData.username}</p>
-                <div className="border-r-8">
+            <div className="flex">
+                <div className="border bg-black w-10 h-10">
                     <img />
                 </div>
+                <p className="">{postData.username}</p>
             </div>
             <p className="">{postData.content}</p>
             <div className="">
