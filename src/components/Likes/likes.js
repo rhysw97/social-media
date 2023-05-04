@@ -28,10 +28,12 @@ export default function Likes(props) {
    
     return(
         <div>
-            <div>
-                <p onClick={handleLikes}>Like</p>
-                <p>{likes}</p>
-                    <LikedBy likedBy={props.post.likedBy}/>
+            <div className='flex justify-between'>
+                <div className="flex gap-1">
+                    <p onClick={handleLikes}>Like</p>
+                    <p>{likes}</p>
+                </div>
+                <LikedBy likedBy={props.post.likedBy}/>
             </div>
         </div>
     )

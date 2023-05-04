@@ -34,6 +34,7 @@ export default function Login() {
         if(response) {
             setLoginMessage(null)
             navigate('/post')
+    
         } else {
             setLoginMessage(currentMessage => <p>Email or password could not be verfied. Please check they have been inputted correctly or click below to create an account</p>)
         }
