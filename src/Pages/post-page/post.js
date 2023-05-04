@@ -1,6 +1,7 @@
 import {useState} from "react";
 import UserProfile from "../../data/userProfile";
 import Likes from "../../components/Likes/likes"
+import Comment from "../../components/comments/comment";
 
 
 
@@ -21,6 +22,7 @@ export default function Post(props) {
             <p className="">{postData.content}</p>
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
+                <Comment id={postData.id}/>
             </div>
         </div>
     )
