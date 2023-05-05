@@ -2,12 +2,14 @@ import {useState} from "react";
 import UserProfile from "../../data/userProfile";
 import Likes from "../../components/Likes/likes"
 import Comment from "../../components/comments/comment";
+import ViewComments from "../../components/comments/viewComments";
+import Modal from "./../..//components//UI/modal/modal"
 
 
 
 
 export default function Post(props) {
-    
+    const [modalActive, setModalActive] = useState(false);
     const postData = props.post
     console.table(postData)
 
@@ -22,8 +24,14 @@ export default function Post(props) {
             <p className="">{postData.content}</p>
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
-                <Comment id={postData.id}/>
+                <p className="open-modal" onClick={() => {
+                     console.log('postData',postData)
+                    setModalActive(true)
+                   
+                }}>comments</p>
+                <Modal show={modalActive} close={()=> setModalActive(false)} content={<ViewComments id={postData.id} comments={postData.comments}/>} title={"Comments"}/>
                 
+
                 
             </div>
         </div>
