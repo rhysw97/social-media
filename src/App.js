@@ -3,7 +3,7 @@ import CreatePost from './Pages/post-page/create-post';
 import Register from './Pages/register/register';
 import LandingPage from './Pages/landing-page/landing-page';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Navbar from './components/UI/navbar/navbar';
 import "./assets/main.css"
 import { USERNAME, LOGGEDIN } from './data/contexts';

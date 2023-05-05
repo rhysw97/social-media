@@ -10,15 +10,17 @@ export default function Likes(props) {
     const [likeMessage, setLikeMessage] = useState('Like')
 
     useEffect( () => {
+        setTimeout(() => {
         console.log('username', usernameContext)
         console.log('likedBy', likedBy)
-        if(usernameContext) {
-            if(likedBy.includes(usernameContext)) {
-                setLikeMessage('Unlike')
-            } else {
-                setLikeMessage('Like')
+            if(usernameContext) {
+                if(likedBy.includes(usernameContext)) {
+                    setLikeMessage('Unlike')
+                } else {
+                    setLikeMessage('Like')
+                }
             }
-        }
+        }, 1)
     })
     //if user likes name gets added to array.
     //if the user clicks when liked 
