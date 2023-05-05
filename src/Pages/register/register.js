@@ -2,6 +2,8 @@ import React, {useState, useRef} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import Password from "./password.js";
 import {useNavigate} from "react-router-dom";
+import {useContext} from "react";
+import {USERNAME, LOGGEDIN} from "../../data/contexts.js";
 //import UserProfile from "../../data/userProfile.js";
 //check that the username hasn't been taken by sending to backend and checking against db
 
@@ -9,6 +11,10 @@ import {useNavigate} from "react-router-dom";
 //probably look into terms and conditions as can store data
 
 export default function Register() {
+    //context
+    const {value, setValue} = useContext(USERNAME);
+    //const {loggedIn, setLoggedIn} = useContext(LOGGEDIN);
+
     const usernameRef = useRef();
     const [email, setEmail] = useState();
     const [dateOfBirth, setDateOfBirth] = useState();
@@ -77,6 +83,7 @@ export default function Register() {
                 dateOfBirth: dateOfBirth,
                 password: userPassword
             };
+
             createUser(data)
         }
     };
@@ -98,7 +105,7 @@ export default function Register() {
 
         if(!response.username && !response.email) {
             navigate('/post')
-           // UserProfile.setName(usernameRef)
+            setValue(usernameRef.current.value)
         }
     }
 

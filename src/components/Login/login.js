@@ -1,9 +1,10 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import {BrowserRouter, useNavigate} from 'react-router-dom';
-
+import {USERNAME} from '../../data/contexts.js'
 
 export default function Login() {
+    const {usernameContext, setUsernameContext} = useContext(USERNAME);
     //variables store state of login data 
     //this means it wont be deleted when the login component reloads itself
     const [email, setEmail] = useState('');
@@ -30,14 +31,17 @@ export default function Login() {
 
     async function handleLoginResponse() {
         const response = await postRequest('login', { email, password });
-        console.log(response)
+        console.log(response.loggedin)
         if(response) {
             setLoginMessage(null)
-            
+            console.log(response.username)
+            setUsernameContext(() => response.username)
+            console.log('username', usernameContext)
+           
             navigate('/post')
     
         } else {
-            setLoginMessage(currentMessage => <p>Email or password could not be verfied. Please check they have been inputted correctly or click below to create an account</p>)
+            setLoginMessage(() => <p>Email or password could not be verfied. Please check they have been inputted correctly or click below to create an account</p>)
         }
     }
 
