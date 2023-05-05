@@ -33,6 +33,7 @@ export default function Login() {
         console.log(response)
         if(response) {
             setLoginMessage(null)
+            
             navigate('/post')
     
         } else {

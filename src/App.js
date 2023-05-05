@@ -8,10 +8,10 @@ import Navbar from './components/UI/navbar/navbar';
 import "./assets/main.css"
 
 
+
 //allow user to post
 function App() {
-  const UserContext = createContext()
-  const loggedIn = createContext()
+  
   return (
     <BrowserRouter>
       <React.StrictMode>
