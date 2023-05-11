@@ -10,44 +10,40 @@ export default function Likes(props) {
     const [likeMessage, setLikeMessage] = useState('Like')
 
     useEffect( () => {
-        setTimeout(() => {
-        console.log('username', usernameContext)
-        console.log('likedBy', likedBy)
-            if(usernameContext) {
-                if(likedBy.includes(usernameContext)) {
-                    setLikeMessage('Unlike')
-                } else {
-                    setLikeMessage('Like')
-                }
+        if(usernameContext) {
+            if(likedBy.includes(usernameContext)) {
+                setLikeMessage('Unlike')
+            } else {
+                setLikeMessage('Like')
             }
-        }, 1)
+        }
     })
     //if user likes name gets added to array.
     //if the user clicks when liked 
     //likes is length of array
-
-   
     
     const handleLikes = () => {
         console.log('username',usernameContext )
         
         if(likedBy.includes(usernameContext)) {
+            console.log("Woah")
             //remove user from likedBy and remove like
             setLikes(currentLikes => currentLikes - 1)
             postRequest('posts/unLikePost', {postId: props.post.id})
-            setLikedBy(currentLikedBy => currentLikedBy.filter(user => user !== usernameContext))
+            setLikedBy(() => likedBy.filter(user => user !== usernameContext))
+            console.log(likedBy)
             setLikeMessage('Like')
         } else {
+            console.log("yeah")
             //add user to likedBy and add like
             setLikes(currentLikes => currentLikes + 1)
-            console.log(props.post.id)
             postRequest('posts/likePost', {postId: props.post.id})
-            setLikedBy(currentLikedBy => [...currentLikedBy, usernameContext])
+            setLikedBy(() => [...likedBy, usernameContext])
+            console.log(likedBy)
             setLikeMessage('Unlike')
         }
     }
 
-   
     return(
         <div>
             <div className='flex justify-between'>
@@ -55,7 +51,7 @@ export default function Likes(props) {
                     <p onClick={handleLikes}>{likeMessage}</p>
                     <p>{likes}</p>
                 </div>
-                <LikedBy likedBy={props.post.likedBy}/>
+                <LikedBy likedBy={likedBy}/>
             </div>
         </div>
     )
