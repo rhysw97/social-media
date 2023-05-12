@@ -2,7 +2,6 @@ import {useState} from "react";
 import UserProfile from "../../data/userProfile";
 import Likes from "../../components/Likes/likes"
 import Comment from "../../components/comments/comment";
-import ViewComments from "../../components/comments/viewComments";
 import Modal from "./../..//components//UI/modal/modal"
 
 
@@ -29,7 +28,7 @@ export default function Post(props) {
                     setModalActive(true)
                    
                 }}>comments</p>
-                <Modal show={modalActive} close={()=> setModalActive(false)} content={<ViewComments id={postData.id} comments={postData.comments}/>} title={"Comments"}/>
+                <Modal show={modalActive} close={()=> setModalActive(false)} content={<Comment id={postData.id}/>} title={"Comments"}/>
                 
 
                 

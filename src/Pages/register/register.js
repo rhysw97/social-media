@@ -104,7 +104,7 @@ export default function Register() {
         }
 
         if(!response.username && !response.email) {
-            navigate('/post')
+            navigate('/edit-profile')
             setValue(usernameRef.current.value)
         }
     }
