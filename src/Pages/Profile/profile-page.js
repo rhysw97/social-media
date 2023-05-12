@@ -16,7 +16,6 @@ export default function ProfilePage(){
             <ol>
                 {profile.genres.map(genre => <li><p>{genre}</p></li>)}
             </ol>
-            
         </div>
     )
 }

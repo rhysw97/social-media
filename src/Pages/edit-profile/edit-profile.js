@@ -1,3 +1,5 @@
+import { postRequest } from "../../utils/server-queries.ts";
+
 export default function EditProfile() {
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
@@ -6,7 +8,7 @@ export default function EditProfile() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      // TODO: Submit form data to backend
+      postRequest('edit-profile', {name, image, bio, genres});
     };
   
     return (
@@ -16,11 +18,13 @@ export default function EditProfile() {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
+          required
         />
         <input
           placeholder="Bio"
