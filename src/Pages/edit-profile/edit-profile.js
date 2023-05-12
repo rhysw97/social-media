@@ -1,14 +1,33 @@
-import { postRequest } from "../../utils/server-queries.ts";
-import { useState } from "react";
+import { getRequest, postRequest } from "../../utils/server-queries.ts";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function EditProfile() {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
     const [bio, setBio] = useState("");
     const [genres, setGenres] = useState(["alternative", "rock", "hip-hop", "jazz"]);
-  
-    const handleSubmit = (e) => {
+    
+    useEffect(() => {
+        if (image) {
+          const formData = new FormData();
+          formData.append('image', image);
+          postRequest('profile/image', formData);
+        }
+    }, [image])
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      postRequest('edit-profile', {name, image, bio, genres});
+      console.log(image)
+      const data = {name, image, bio, genres}
+    console.log(data)
+      postRequest('profile/edit', data );
+      //navigate('/post')
+    };
+
+    const handleChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
     };
   
     return (
@@ -23,7 +42,7 @@ export default function EditProfile() {
         <input
           type="file"
           accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={handleChange}
           required
         />
         <input
