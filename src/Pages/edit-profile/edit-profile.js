@@ -1,5 +1,5 @@
 import { postRequest } from "../../utils/server-queries.ts";
-
+import { useState } from "react";
 export default function EditProfile() {
     const [name, setName] = useState("");
     const [image, setImage] = useState("");

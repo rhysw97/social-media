@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom"
 
+export default function NavbarIcon({icon, text='tooltip'}, path='/') {
+    const navigate = useNavigate()
 
-export default function NavbarIcon({icon, text='tooltip'}) {
+    const navigateToPage = () => {
+        console.log('to the profile page')
+        navigate(path)
+    }
     return (
-        <div className="navbar-icon group">
+        <div onclick={navigateToPage}className="navbar-icon group">
             {icon}
 
             <span className="navbar-tooltip group-hover:scale-100">

@@ -8,6 +8,7 @@ import Navbar from './components/UI/navbar/navbar';
 import "./assets/main.css"
 import { USERNAME, LOGGEDIN } from './data/contexts';
 import EditProfile from './Pages/edit-profile/edit-profile';
+import ProfilePage from './Pages/Profile/profile-page';
 
 
 
@@ -26,7 +27,7 @@ function App() {
                 <Route path="/" element={<LandingPage/>} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/post" element={<CreatePost/>} />
-                <Route path="/profile" element={<CreatePost/>} />
+                <Route path="/profile" element={<ProfilePage/>} />
                 <Route path="/edit-profile" element={<EditProfile/>} />
             </Routes>
             <Navbar/>
