@@ -1,6 +1,14 @@
+import { useEffect, useState } from "react"
+import { getRequest } from "../../utils/server-queries.ts"
 
 export default function ProfilePage(){
-    //call for profile data
-    //call for users posts
-    //call for users comments
+    useEffect(async () => {
+        
+    })
+    
+    return(
+        <div>
+            <h1>Profile Page</h1>
+        </div>
+    )
 }

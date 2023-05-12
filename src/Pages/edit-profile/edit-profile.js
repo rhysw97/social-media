@@ -44,3 +44,4 @@ export default function EditProfile() {
         <button type="submit" onClick={handleSubmit}>Submit</button>
       </div>
     );
+}
