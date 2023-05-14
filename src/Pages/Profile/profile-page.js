@@ -8,23 +8,22 @@ export default function ProfilePage(){
     },[])
 
     async function getProfile() { 
-        const response = await getRequest('profile/get-profile')
-        console.log(response)
+        const response = await getRequest('/profile/get-profile')
+        console.log('response', response)
+        setProfile(()=> response)
     }
-    
-    // return(
-    //     <div>
-    //         <h1>{profile.username}</h1>
-    //         <img src={`localhost:8000/users/${profile.profilePicture}`} alt="profile picture"/>
-    //         <p>{profile.bio}</p>
-    //         <ol>
-    //             {profile.genres.map(genre => <li><p>{genre}</p></li>)}
-    //         </ol>
-    //     </div>
-    // )
-    return (
+    if(!profile) {
+        return(<div>loading</div>)
+    } else {
+    return(
         <div>
-            <h1>Profile</h1>
+            <h1>{profile.username}</h1>
+            <img src={`localhost:8000/users/${profile.profilePicture}`} alt="profile picture"/>
+            <p>{profile.bio}</p>
+            <ol>
+                {profile.genres.map(genre => <li><p>{genre}</p></li>)}
+            </ol>
         </div>
     )
+    }
 }

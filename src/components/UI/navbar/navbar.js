@@ -11,7 +11,7 @@ export default function Navbar() {
             <NavbarIcon icon={<FaFire size="28" />} path={'/profile'} text='Profile' />
             <NavbarIcon icon={<BsPlus size="32" />} path={'/edit-profile'} text='Edit Profile'/>
             <NavbarIcon icon={<BsFillLightningFill size="20" />} path={'/post'} text='Feed' />
-            <NavbarIcon icon={<FaPoo size="20" />} />
+            <NavbarIcon icon={<FaPoo size="20" />} text='Landing Page'/>
         </div>
     )
 }
