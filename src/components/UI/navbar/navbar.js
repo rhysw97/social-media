@@ -9,8 +9,8 @@ export default function Navbar() {
         flex flex-col justify-end sm:justify-start
         bg-gray-900 text-white shadow-lg">
             <NavbarIcon icon={<FaFire size="28" />} path={'/profile'} text='Profile' />
-            <NavbarIcon icon={<BsPlus size="32" />} />
-            <NavbarIcon icon={<BsFillLightningFill size="20" />} />
+            <NavbarIcon icon={<BsPlus size="32" />} path={'/edit-profile'} text='Edit Profile'/>
+            <NavbarIcon icon={<BsFillLightningFill size="20" />} path={'/post'} text='Feed' />
             <NavbarIcon icon={<FaPoo size="20" />} />
         </div>
     )

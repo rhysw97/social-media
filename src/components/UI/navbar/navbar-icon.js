@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"
 
-export default function NavbarIcon({icon, text='tooltip'}, path='/') {
+export default function NavbarIcon({icon, text='tooltip', path='/'}) {
     const navigate = useNavigate()
 
     const navigateToPage = () => {
         console.log('to the profile page')
-        navigate('profile')
+        navigate(path)
     }
     return (
         <div onClick={navigateToPage} className="navbar-icon group">
