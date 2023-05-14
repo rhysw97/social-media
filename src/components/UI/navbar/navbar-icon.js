@@ -5,10 +5,10 @@ export default function NavbarIcon({icon, text='tooltip'}, path='/') {
 
     const navigateToPage = () => {
         console.log('to the profile page')
-        navigate(path)
+        navigate('profile')
     }
     return (
-        <div onclick={navigateToPage}className="navbar-icon group">
+        <div onClick={navigateToPage} className="navbar-icon group">
             {icon}
 
             <span className="navbar-tooltip group-hover:scale-100">
