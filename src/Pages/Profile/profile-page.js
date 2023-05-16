@@ -15,15 +15,15 @@ export default function ProfilePage(){
     if(!profile) {
         return(<div>loading</div>)
     } else {
-    return(
+   return(
         <div>
             <h1>{profile.username}</h1>
             <img src={`localhost:8000/users/${profile.profilePicture}`} alt="profile picture"/>
             <p>{profile.bio}</p>
             <ol>
-                {profile.genres.map(genre => <li><p>{genre}</p></li>)}
+                {profile.genres.map((genre, index) => <li key={index}><p>{genre}</p></li>)}
             </ol>
         </div>
-    )
+        )
     }
 }
