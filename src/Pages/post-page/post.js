@@ -1,16 +1,28 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import UserProfile from "../../data/userProfile";
 import Likes from "../../components/Likes/likes"
 import Comment from "../../components/comments/comment";
 import Modal from "./../..//components//UI/modal/modal"
+import { USERNAME } from "../../data/contexts";
 
 
 
 
 export default function Post(props) {
     const [modalActive, setModalActive] = useState(false);
+    const [username, setUsername] = useState(USERNAME)
     const postData = props.post
     console.table(postData)
+    let editPostButton;
+
+    useEffect(() => {
+        console.log(username)
+        if(postData.username === username) {
+            editPostButton = <p>edit</p>
+        } else {
+            editPostButton = null
+        }
+    }, [])
 
     return(
         <div className="flex-col">
@@ -21,6 +33,7 @@ export default function Post(props) {
                 <p className="">{postData.username}</p>
             </div>
             <p className="">{postData.content}</p>
+            {editPostButton}
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
                 <p className="open-modal" onClick={() => {
@@ -28,6 +41,7 @@ export default function Post(props) {
                     setModalActive(true)
                    
                 }}>comments</p>
+
                 <Modal show={modalActive} close={()=> setModalActive(false)} content={<Comment id={postData.id}/>} title={"Comments"}/>
                 
 
