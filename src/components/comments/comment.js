@@ -7,9 +7,9 @@ export default function Comment(props) {
     const commentInputRef = useRef()
     async function getComments() {  
         const response = await postRequest('posts/viewComments', {postId: props.id})
-        console.log(response)
+        console.log('response', response)
       
-        setComments(response)
+        setComments(() => response.comments)
         console.log('viuewcomments', comments)
     }
 
@@ -32,12 +32,15 @@ export default function Comment(props) {
     return (
         <div>
             {comments.map(comment => {
-                <div>
-                    <h2>{comment.username}</h2>
+                console.log('35', comment.message)
+                {
                     <div>
-                        {comment.content}
+                        <h2>{comment.username}</h2>
+                        <div>
+                            <p>{comment.message}</p>
+                        </div>
                     </div>
-                </div>
+                }
             })}
             <input placeholder="add comment" ref={commentInputRef}/>
             <button onClick={commentOnPost}>Send</button>
