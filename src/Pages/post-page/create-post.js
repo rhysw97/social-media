@@ -43,8 +43,6 @@ export default function CreatePost() {
         });
     }
 
-    
-
     return(
         <div className='' >
             <header className='flex justify-center'>

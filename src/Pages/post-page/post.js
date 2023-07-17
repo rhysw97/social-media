@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import UserProfile from "../../data/userProfile";
 import Likes from "../../components/Likes/likes"
-import Comment from "../../components/comments/comment";
+import PostComment from "../../components/comments/postComment";
 import Modal from "./../..//components//UI/modal/modal"
 import { USERNAME } from "../../data/contexts";
 
@@ -42,7 +42,7 @@ export default function Post(props) {
                    
                 }}>comments</p>
 
-                <Modal show={modalActive} close={()=> setModalActive(false)} content={<Comment id={postData.id}/>} title={"Comments"}/>
+                <Modal show={modalActive} close={()=> setModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>
                 
 
                 
