@@ -14,7 +14,7 @@ export default function PostComment(props) {
         console.log('response', response.comments)
         
         response.comments.forEach(comment => {
-            {console.log(comment)}
+            {console.log('added')}
             setComments(currentComments => [...currentComments, {
                 id:comment.id,
                 username: comment.postedBy,
@@ -47,16 +47,11 @@ export default function PostComment(props) {
         return (
             <div>
                 <div className="comments">
-                    {console.log(comments[0].message)}
-                    <h1>hi {comments[0].message}</h1>
-        
                     {comments.map((comment) => {
-                        {console.log(comment.message)}
                         return <div>
                                 <h2>{comment.username}</h2>
                                 <p>{comment.message}</p>
                             </div>
-                    
                     })}
                 </div>
                 <input placeholder="add comment" ref={commentInputRef}/>
@@ -68,6 +63,8 @@ export default function PostComment(props) {
         return (
             <div>
                 <h2>Loading...</h2>
+                <input placeholder="add comment" ref={commentInputRef}/>
+                <button onClick={commentOnPost}>Send</button>
             </div>
         )
     }
