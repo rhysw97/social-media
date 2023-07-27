@@ -30,7 +30,7 @@ export default function Post(props) {
                 <div className="border bg-black w-10 h-10">
                     <img />
                 </div>
-                <p className="">{postData.username}</p>
+                <p className="">{postData.user}</p>
             </div>
             <p className="">{postData.content}</p>
             {editPostButton}

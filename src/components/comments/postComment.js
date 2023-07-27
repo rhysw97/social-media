@@ -17,7 +17,7 @@ export default function PostComment(props) {
             {console.log('added')}
             setComments(currentComments => [...currentComments, {
                 id:comment.id,
-                username: comment.postedBy,
+                username: comment.user,
                 message: comment.message,
                 likes: comment.likes,
             }])
@@ -47,8 +47,8 @@ export default function PostComment(props) {
         return (
             <div>
                 <div className="comments">
-                    {comments.map((comment) => {
-                        return <div>
+                    {comments.map((comment, index) => {
+                        return <div key={index}>
                                 <h2>{comment.username}</h2>
                                 <p>{comment.message}</p>
                             </div>
