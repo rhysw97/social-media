@@ -9,10 +9,8 @@ export default function PostComment(props) {
    
     useEffect( () => {
         getComments()
-      
-
-
     }, [])
+
     async function getComments() { 
         setComments([])
         const response = await postRequest('posts/viewComments', {postId: props.id})
@@ -60,6 +58,7 @@ export default function PostComment(props) {
 
         setPictures(() => tempPictures)
     }
+    
     if(comments) {
         return (
             <div>
