@@ -2,15 +2,13 @@ import { getRequest, postRequest, formPostRequest } from "../../utils/server-que
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function EditProfile() {
-    const navigate = useNavigate();
+
     const [name, setName] = useState("");
     const [image, setImage] = useState();
     const [bio, setBio] = useState("");
     const [genres, setGenres] = useState(["alternative", "rock", "hip-hop", "jazz"]);
     const [isFilePicked, setIsFilePicked] = useState(false);
     
-   
-
     const handleSubmit = (e) => {
         console.log('submitted')
         e.preventDefault();
@@ -21,9 +19,7 @@ export default function EditProfile() {
         formData.append('name', name)
         formData.append('bio', bio)
         formData.append('genres', genres)  
-        console.log(formData)
         
-      
         fetch('/profile/edit', {
             method: 'POST',
             body: formData,
@@ -36,10 +32,10 @@ export default function EditProfile() {
         setIsFilePicked(true);
     };
   
-  
     return (
       <div className="flex flex-col w-[60%] mx-auto" >
         <h1>Edit Profile</h1>
+
         <form onSubmit={handleSubmit}>
             <input
             placeholder="Name"
@@ -48,6 +44,7 @@ export default function EditProfile() {
             onChange={(e) => setName(e.target.value)}
             required
             />
+
             <input
             name='file'
             type="file"
@@ -55,24 +52,26 @@ export default function EditProfile() {
             onChange={handleChange}
             required
             />
+
             <input
             placeholder="Bio"
             name='bio'
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             />
+
             <div>
             <h2>Pick your favourite Genres</h2>
             {genres.map((genre) => (
                 <div key={genre}>
-                <label htmlFor={genre}>{genre}</label>
-                <input
-                    name="genres"
-                    type="checkbox"
-                    value={genre}
-                    checked={genres.includes(genre)}
-                    onChange={(e) => setGenres(e.target.checked ? [...genres, genre] : genres.filter(g => g !== genre))}
-                />
+                    <label htmlFor={genre}>{genre}</label>
+                    <input
+                        name="genres"
+                        type="checkbox"
+                        value={genre}
+                        checked={genres.includes(genre)}
+                        onChange={(e) => setGenres(e.target.checked ? [...genres, genre] : genres.filter(g => g !== genre))}
+                    />
                 </div>
             ))}
             </div>

@@ -28,16 +28,16 @@ export default function Post(props) {
         <div className="flex-col">
             <div className="flex">
                 <div className="border bg-black w-10 h-10">
-                    <img />
+                    <img className="w-20 h-20" src={`./uploads/${postData.profilePicture}`}/>
                 </div>
-                <p className="">{postData.user}</p>
+                <p className="">{postData.username}</p>
             </div>
             <p className="">{postData.content}</p>
             {editPostButton}
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
                 <p className="open-modal" onClick={() => {
-                     console.log('postData',postData)
+                    console.log('postData',postData)
                     setModalActive(true)
                    
                 }}>comments</p>

@@ -1,9 +1,10 @@
 
-export async function postRequest(endpoint: string, data: any) {
+export async function postRequest(endpoint: string, data: any, auth: string ='') {
     const responseData = await fetch(`${endpoint}`, {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': auth
         },
        
         //sends as JSON string to backend
@@ -23,8 +24,12 @@ export async function formPostRequest(endpoint: string, data: FormData) {
     .then((response) => response.json())
     return responseData
 }
-export async function getRequest(endpoint: string) {
-    const responseData = await fetch(`${endpoint}`)
-    .then(response => response.json())
+export async function getRequest(endpoint: string, auth: string ='') {
+    const responseData = await fetch(`${endpoint}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': auth
+        },
+    }).then(response => response.json())
     return responseData
 }

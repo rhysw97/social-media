@@ -6,10 +6,12 @@ import Logout from '../../components/Login/logout';
 
 
 
-
+//component to allow user to create a pose
 export default function CreatePost() {
-    const [posts, setPosts] = useState([]);
-    const postInputRef = useRef()
+    const [posts, setPosts] = useState([]); //recent posts state
+    const postInputRef = useRef() //reference to post input
+
+    //function to send new post to backend
     async function newPost(e) {
         
         if(postInputRef.current.value) {
@@ -17,17 +19,18 @@ export default function CreatePost() {
             postRequest('posts', data);
 
             postInputRef.current.value = ''
-            const recentPosts = await getRecentPosts()
+            getRecentPosts()
         }
     }
 
+    //run once when first rendered
     useEffect( () => {  
         getRecentPosts()
   
     },[])
-
+     //function to get recent posts from server
     async function getRecentPosts(){
-        const serverPosts = await getRequest('posts/recentPosts')
+        const serverPosts = await getRequest('posts/recentPosts', localStorage.getItem('access_token'))
         
         setPosts([])
         serverPosts.forEach(post => {

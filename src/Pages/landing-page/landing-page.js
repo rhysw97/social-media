@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Login from "../../components/Login/login";
 
+//contains landing page that user will start on
 export default function LandingPage() {
     const backgroundImage = 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg'
-   
-  
+    
     return(
         <div className="flex flex-col">
             <header className="bg-green-500 py-10 mt-5">

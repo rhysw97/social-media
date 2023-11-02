@@ -8,6 +8,7 @@ import "./assets/main.css"
 import { USERNAME, LOGGEDIN } from './data/contexts';
 import EditProfile from './Pages/edit-profile/edit-profile';
 import ProfilePage from './Pages/Profile/profile-page';
+import PrivateRoutes from './utils/PrivateRoutes';
 
 //allow user to post
 function App() {
@@ -23,9 +24,11 @@ function App() {
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/register" element={<Register/>} />
-              <Route path="/post" element={<CreatePost/>} />
-              <Route path="/profile" element={<ProfilePage/>} />
-              <Route path="/edit-profile" element={<EditProfile/>} />
+              <Route element={<PrivateRoutes/>}>
+                <Route path="/post" element={<CreatePost/>} />
+                <Route path="/profile" element={<ProfilePage/>} />
+                <Route path="/edit-profile" element={<EditProfile/>} />
+              </Route>
           </Routes>
           <Navbar/>
         </div>

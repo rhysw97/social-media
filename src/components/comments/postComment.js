@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import {getRequest, postRequest} from '../../utils/server-queries.ts'
 
-
+//component to allow user to post a comment
 export default function PostComment(props) {
     const [comments, setComments] = useState([])
     const commentInputRef = useRef()
-   
+    //runs once on render
     useEffect( () => {
-        getComments()
+        getComments() //calls get comments
     
     }, [])
 
+    //function to deal with comments returned from server
     async function getComments() { 
-        setComments([])
-        const response = await postRequest('posts/viewComments', {postId: props.id})
+        setComments([]) //sets comments state back to empty array to avoid duplicates
+        //requests 
+        const response = await postRequest('posts/viewComments', {postId: props.id}) 
         console.log('response', response.comments)
         
         response.comments.forEach(comment => {
@@ -43,12 +45,12 @@ export default function PostComment(props) {
    
     if(comments) {
         return (
-            <div className="h-full">
-                <div className="comments h-96 overflow-scroll">
+            <div className="h-screen">
+                <div className="comments h-4/5 overflow-scroll">
                     {comments.map((comment, index) => {
                         return <div className="" key={index}>
-                           <div className="">
-                                <img className="w-20 h-20" src={`./uploads/${comment.profilePicture}`}/>
+                           <div className="flex items-center">
+                                <img className="w-20 h-20" />
                                 <h2>{comment.user}</h2>
                            </div>
                                 <p>{comment.message}</p>

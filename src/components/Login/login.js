@@ -3,6 +3,7 @@ import { postRequest } from "../../utils/server-queries.ts";
 import {BrowserRouter, useNavigate} from 'react-router-dom';
 import {USERNAME} from '../../data/contexts.js'
 
+
 export default function Login() {
     const {usernameContext, setUsernameContext} = useContext(USERNAME);
     //variables store state of login data 
@@ -13,38 +14,47 @@ export default function Login() {
 
     //stores navigation hook to allow moving to other pages
     const navigate = useNavigate()
-    
+
     //function to run when user inputs into email field to update the components the 
     const handleEmail = (event) => {
         setEmail(event.target.value);
     };
       
-    
+    //click event function to be used to set the Password state to the value of the password input
     const handlePassword = (event) => {
         setPassword(event.target.value);
     };
     
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        handleLoginResponse()
-      };
+    //function to be used to handle submit event
+    const handleSubmit = (event) => {
+        event.preventDefault(); //prevents from reloading
+        handleLoginResponse() //function defined line 33
+    };
 
+    //function async function to handle whether the login is successful of not
     async function handleLoginResponse() {
+        //send login data to serve and wait to see whether the server logs the user in
         const response = await postRequest('login', { email, password });
-        console.log(response.loggedin)
+        //if yes
         if(response) {
+            //don't need login message element showing login failed
             setLoginMessage(null)
-            console.log(response.username)
+            //set username context (react global variable) to the to responses username attribute
             setUsernameContext(() => response.username)
-            console.log('username', usernameContext)
-           
-            navigate('/post')
+
+            localStorage.setItem('access_token', response.accessToken)
+            console.log(response.accessToken)
+
+            navigate('/post') //navigate to post page (probably should have named this feed)
     
+        //if not show element detailing login failure
         } else {
             setLoginMessage(() => <p>Email or password could not be verfied. Please check they have been inputted correctly or click below to create an account</p>)
         }
     }
 
+
+    //elements to be rendered go within jsx
     return(
        <div className="bg-green-500 flex flex-col items-center gap-30 mt-20">
           <h1 className="text-4xl mb-20">Login</h1>
