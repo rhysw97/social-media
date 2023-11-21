@@ -1,5 +1,6 @@
 import { createContext } from 'react'
 
-export const USERNAME = createContext(null)
+export const USERNAME = createContext('')
 
-export const LOGGEDIN = createContext('false')
+export const LOGGEDIN = createContext(false)
+

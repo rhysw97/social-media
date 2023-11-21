@@ -42,8 +42,9 @@ export default function Login() {
             //set username context (react global variable) to the to responses username attribute
             setUsernameContext(() => response.username)
 
-            localStorage.setItem('access_token', response.accessToken)
-            console.log(response.accessToken)
+            console.log('context', response.username,  usernameContext)
+
+           
 
             navigate('/post') //navigate to post page (probably should have named this feed)
     
