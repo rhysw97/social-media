@@ -6,6 +6,7 @@ import Logout from '../../components/Login/logout';
 
 
 
+
 //component to allow user to create a pose
 export default function CreatePost() {
     const [posts, setPosts] = useState([]); //recent posts state

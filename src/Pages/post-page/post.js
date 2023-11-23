@@ -4,6 +4,8 @@ import Likes from "../../components/Likes/likes"
 import PostComment from "../../components/comments/postComment";
 import Modal from "./../..//components//UI/modal/modal"
 import { USERNAME } from "../../data/contexts";
+import DeletePost from "../../components/DeletePost/DeletePost";
+import EditPost from "../../components/EditPost/EditPost";
 
 export default function Post(props) {
     const [commentsModalActive, setCommentsModalActive] = useState(false);
@@ -14,12 +16,11 @@ export default function Post(props) {
     console.table(postData)
     let editPostButton = null;
     const username = usernameContext
-    const handleEdit = () => {
-        //bring up model that will allow to edit content in message
-    } 
+  
 
     const handleDelete = () => {
-        //bring up model that will ask user to confirm deletion
+        console.log('Delete')
+        setDeleteModalActive(true)
     }
     useEffect(() => {
         console.log('username', username)
@@ -28,8 +29,8 @@ export default function Post(props) {
     if(postData.username === username) {
         editPostButton = 
             <div className="flex  justify-between">
-                <p onClick={handleEdit}>Edit</p>
-                <p onClick={handleDelete}>Delete</p>
+                <p onClick={()=> setEditModalActive(true)}>Edit</p>
+                <p onClick={()=> setDeleteModalActive(true)}>Delete</p>
             </div>
     } else {
         editPostButton = null
@@ -47,14 +48,11 @@ export default function Post(props) {
             {editPostButton}
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
-                <p className="open-modal" onClick={() => {
-                    console.log('postData',postData)
-                    setModalActive(true)
-                }}>comments</p>
+                <p className="open-modal" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
                 {editPostButton}
                 <Modal show={commentsModalActive} close={()=> setCommentsModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>
-                <Modal show={deleteModalActive} close={()=> setDeleteModalActive(false)} content={<PostComment id={postData.id}/>} title={"Delete"}/> 
-                <Modal show={editModalActive} close={()=> setEditModalActive(false)} content={<PostComment id={postData.id}/>} title={"Edit"}/>  
+                <Modal show={deleteModalActive} close={()=> setDeleteModalActive(false)} content={<DeletePost id={postData.id}/>} title={"Delete"}/> 
+                <Modal show={editModalActive} close={()=> setEditModalActive(false)} content={<EditPost id={postData.id}/>} title={"Edit"}/>  
             </div>
         </div>
     )
