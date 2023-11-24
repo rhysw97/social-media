@@ -2,10 +2,11 @@ import React from "react";
 
 export default function DeletePost(props) {
     const handleConfimDelete = async () => {
-        fetch('/post/deletePost', {
+        console.log('ID', typeof props.id)
+        fetch('posts/deletePost', {
             method: 'DELETE',
-            body: {
-                postId: props.Id
+            headers: {
+                'postId': props.id,
             }
         })
     }

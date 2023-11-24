@@ -4,9 +4,6 @@ import { postRequest, getRequest } from '../../utils/server-queries.ts';
 import UserProfile from '../../data/userProfile';
 import Logout from '../../components/Login/logout';
 
-
-
-
 //component to allow user to create a pose
 export default function CreatePost() {
     const [posts, setPosts] = useState([]); //recent posts state

@@ -1,5 +1,5 @@
 import React from "react";
-import { postRequest } from "../../utils/server-queries";
+import { postRequest} from '../../utils/server-queries.ts';
 export default function EditPost(props) {
     let postContent = props.content
     const handleSave = () => {
@@ -9,9 +9,7 @@ export default function EditPost(props) {
     const handleTextChange = (event) => {
         postContent = event.target.value
     }
-
-
-
+    
     return (
         <div>
             <textarea onChange={handleTextChange} >{postContent}</textarea>
