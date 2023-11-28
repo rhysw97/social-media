@@ -17,11 +17,6 @@ export default function Post(props) {
     let editPostButton = null;
     const username = usernameContext
   
-
-    const handleDelete = () => {
-        console.log('Delete')
-        setDeleteModalActive(true)
-    }
     useEffect(() => {
         console.log('username', username)
         
@@ -37,7 +32,7 @@ export default function Post(props) {
     }
 
     return(
-        <div className="flex-col">
+        <div className="flex-col bg-red-700" >
             <div className="flex">
                 <div className="border bg-black w-10 h-10">
                     <img className="w-20 h-20" src={`./uploads/${postData.profilePicture}`}/>
@@ -49,10 +44,9 @@ export default function Post(props) {
             <div className="">
                 <Likes likes ={postData.likes} post={postData}></Likes>
                 <p className="open-modal" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
-                {editPostButton}
                 <Modal show={commentsModalActive} close={()=> setCommentsModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>
                 <Modal show={deleteModalActive} close={()=> setDeleteModalActive(false)} content={<DeletePost id={postData.id}/>} title={"Delete"}/> 
-                <Modal show={editModalActive} close={()=> setEditModalActive(false)} content={<EditPost id={postData.id}/>} title={"Edit"}/>  
+                <Modal show={editModalActive} close={()=> setEditModalActive(false)} content={<EditPost id={postData.id} content={postData.content}/>} title={"Edit"}/>  
             </div>
         </div>
     )

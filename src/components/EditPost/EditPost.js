@@ -1,18 +1,22 @@
 import React from "react";
 import { postRequest} from '../../utils/server-queries.ts';
 export default function EditPost(props) {
-    let postContent = props.content
+
+    let postData = {
+        content : props.content,
+        postId: props.id
+    }
     const handleSave = () => {
-        postRequest("posts/updatePost", postContent)
+        postRequest("posts/updatePost", postData)
     }
 
     const handleTextChange = (event) => {
-        postContent = event.target.value
+        postData.content = event.target.value
     }
-    
+
     return (
         <div>
-            <textarea onChange={handleTextChange} >{postContent}</textarea>
+            <textarea onChange={handleTextChange} >{postData.content}</textarea>
             <p onClick={handleSave}>Save</p>
         </div>
     )

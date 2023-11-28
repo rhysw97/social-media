@@ -1,11 +1,13 @@
 import React,{useState, useContext} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import {BrowserRouter, useNavigate} from 'react-router-dom';
-import {USERNAME} from '../../data/contexts.js'
+import {USERNAME, LOGGEDIN} from '../../data/contexts.js'
+
 
 
 export default function Login() {
     const {usernameContext, setUsernameContext} = useContext(USERNAME);
+    const {loggedInContext, setLoggedInContext} = useContext(LOGGEDIN)
     //variables store state of login data 
     //this means it wont be deleted when the login component reloads itself
     const [email, setEmail] = useState('');
@@ -41,10 +43,9 @@ export default function Login() {
             setLoginMessage(null)
             //set username context (react global variable) to the to responses username attribute
             setUsernameContext(() => response.username)
+            setLoggedInContext(() => true)
 
             console.log('context', response.username,  usernameContext)
-
-           
 
             navigate('/post') //navigate to post page (probably should have named this feed)
     

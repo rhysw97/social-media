@@ -4,18 +4,16 @@ import { postRequest, getRequest } from '../../utils/server-queries.ts';
 import UserProfile from '../../data/userProfile';
 import Logout from '../../components/Login/logout';
 
-//component to allow user to create a pose
+//component to allow user to create a post
 export default function CreatePost() {
     const [posts, setPosts] = useState([]); //recent posts state
     const postInputRef = useRef() //reference to post input
 
     //function to send new post to backend
     async function newPost(e) {
-        
         if(postInputRef.current.value) {
             const data = {post: postInputRef.current.value}
-            postRequest('posts', data);
-
+            postRequest('posts', data)
             postInputRef.current.value = ''
             getRecentPosts()
         }
@@ -51,7 +49,7 @@ export default function CreatePost() {
             </header>
             <Logout />
             
-            <div className=" flex flex-col w-60  mx-auto">
+            <div className=" flex flex-col w-60  mx-auto gap-3">
                 {posts.map((post, index) => <Post key={post.id} post={post} />)}
             </div>
             <div className ="flex flex-col w-60  mt-10 mx-auto">
