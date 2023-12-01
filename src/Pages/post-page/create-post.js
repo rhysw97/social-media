@@ -49,7 +49,7 @@ export default function CreatePost() {
             </header>
             <Logout />
             
-            <div className=" flex flex-col w-60  mx-auto gap-3">
+            <div className=" flex flex-col w-3/6  mx-auto gap-6">
                 {posts.map((post, index) => <Post key={post.id} post={post} />)}
             </div>
             <div className ="flex flex-col w-60  mt-10 mx-auto">
