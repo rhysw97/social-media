@@ -10,7 +10,7 @@
         @apply relative flex items-center justify-center
                h-12 w-12 my-2 mx-auto shadow-lg
                bg-gray-800 text-green-500
-               hover:bg-green-600 hover:text-white
+               hover:bg-green-500 hover:text-white
                rounded-3xl hover:rounded-xl
                transition-all duration-300 ease-linear
                cursor-pointer;
@@ -26,6 +26,10 @@
 
     .input-field{
         @apply border-black border-2 rounded-lg px-2 my-3;
+    }
+    
+    .button-green {
+        @apply rounded-lg bg-green-500 text-white pt-1 pb-1 w-28 text-center
     }
 }
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhaWx3aW5kLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB0YWlsd2luZCBiYXNlO1xyXG5cclxuQHRhaWx3aW5kIGNvbXBvbmVudHM7XHJcblxyXG5AdGFpbHdpbmQgdXRpbGl0aWVzO1xyXG5cclxuQGxheWVyIGNvbXBvbmVudHMge1xyXG5cclxuICAgIC5uYXZiYXItaWNvbiB7XHJcbiAgICAgICAgQGFwcGx5IHJlbGF0aXZlIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyXHJcbiAgICAgICAgICAgICAgIGgtMTIgdy0xMiBteS0yIG14LWF1dG8gc2hhZG93LWxnXHJcbiAgICAgICAgICAgICAgIGJnLWdyYXktODAwIHRleHQtZ3JlZW4tNTAwXHJcbiAgICAgICAgICAgICAgIGhvdmVyOmJnLWdyZWVuLTYwMCBob3Zlcjp0ZXh0LXdoaXRlXHJcbiAgICAgICAgICAgICAgIHJvdW5kZWQtM3hsIGhvdmVyOnJvdW5kZWQteGxcclxuICAgICAgICAgICAgICAgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMzAwIGVhc2UtbGluZWFyXHJcbiAgICAgICAgICAgICAgIGN1cnNvci1wb2ludGVyO1xyXG4gICAgfVxyXG5cclxuICAgIC5uYXZiYXItdG9vbHRpcCB7XHJcbiAgICAgICAgQGFwcGx5IGFic29sdXRlIHctYXV0byBwLTIgbS0yIG1pbi13LW1heCBsZWZ0LTE0XHJcbiAgICAgICAgICAgICAgIHJvdW5kZWQtbWQgc2hhZG93LW1kXHJcbiAgICAgICAgICAgICAgIHRleHQtd2hpdGUgYmctZ3JheS05MDBcclxuICAgICAgICAgICAgICAgdGV4dC14cyBmb250LWJvbGRcclxuICAgICAgICAgICAgICAgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMTAwIHNjYWxlLTAgb3JpZ2luLWxlZnQ7XHJcbiAgICB9XHJcblxyXG4gICAgLmlucHV0LWZpZWxke1xyXG4gICAgICAgIEBhcHBseSBib3JkZXItYmxhY2sgYm9yZGVyLTIgcm91bmRlZC1sZyBweC0yIG15LTM7XHJcbiAgICB9XHJcbn0iXX0= */
