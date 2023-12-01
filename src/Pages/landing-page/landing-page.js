@@ -23,9 +23,6 @@ export default function LandingPage() {
 
     return(
         <div className="flex flex-col">
-            <header className="bg-green-500 py-10 mt-5">
-            <h1 className="text-white text-center font-extrabold ">Gig Mates</h1>
-            </header>
             <div className=" mt-10 bg-slate-900 w-480" styles={{background: `url(${backgroundImage})`}}>
                 {view}
             </div>
