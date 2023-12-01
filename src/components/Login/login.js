@@ -59,7 +59,10 @@ export default function Login() {
     //elements to be rendered go within jsx
     return(
        <div className="bg-green-500 flex flex-col items-center gap-30 mt-20">
-          <h1 className="text-4xl mb-20">Login</h1>
+        <header className="bg-green-500 py-10 mt-5">
+            <h1 className="text-white text-center font-extrabold text-6xl">Gig Mates</h1>
+        </header>
+          <h2 className="text-4xl mb-20">Login</h2>
            <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
                 <div
                 className="mb-10">
