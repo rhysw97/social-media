@@ -33,50 +33,51 @@ export default function EditProfile() {
     };
   
     return (
-      <div className="flex flex-col w-[60%] mx-auto" >
-        <h1>Edit Profile</h1>
+      <div className="flex flex-col mx-auto" >
+        <h1 className="heading">Edit Profile</h1>
+        <div className="flex items-center flex-col">
+            <form  className="w-[60%]" onSubmit={handleSubmit}>
+                <input
+                placeholder="Name"
+                name='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                />
 
-        <form onSubmit={handleSubmit}>
-            <input
-            placeholder="Name"
-            name='name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            />
+                <input
+                name='file'
+                type="file"
+                accept="image/*"
+                onChange={handleChange}
+                required
+                />
 
-            <input
-            name='file'
-            type="file"
-            accept="image/*"
-            onChange={handleChange}
-            required
-            />
+                <input
+                placeholder="Bio"
+                name='bio'
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                />
 
-            <input
-            placeholder="Bio"
-            name='bio'
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            />
-
-            <div>
-            <h2>Pick your favourite Genres</h2>
-            {genres.map((genre) => (
-                <div key={genre}>
-                    <label htmlFor={genre}>{genre}</label>
-                    <input
-                        name="genres"
-                        type="checkbox"
-                        value={genre}
-                        checked={genres.includes(genre)}
-                        onChange={(e) => setGenres(e.target.checked ? [...genres, genre] : genres.filter(g => g !== genre))}
-                    />
+                <div>
+                <h2>Pick your favourite Genres</h2>
+                {genres.map((genre) => (
+                    <div key={genre}>
+                        <label htmlFor={genre}>{genre}</label>
+                        <input
+                            name="genres"
+                            type="checkbox"
+                            value={genre}
+                            checked={genres.includes(genre)}
+                            onChange={(e) => setGenres(e.target.checked ? [...genres, genre] : genres.filter(g => g !== genre))}
+                        />
+                    </div>
+                ))}
                 </div>
-            ))}
-            </div>
-            <button type="submit" >Submit</button>
-        </form>
+                <button type="submit" >Submit</button>
+            </form>
+        </div>
       </div>
     );
 }

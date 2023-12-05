@@ -58,7 +58,9 @@ export default function Login() {
 
     //elements to be rendered go within jsx
     return(
-       <div className="bg-green-500 flex flex-col items-center gap-30 mt-20">
+        <div style={{
+            backgroundImage: './../../assets/images/gig-picture.jpg',
+        }}className="bg-green-500 flex flex-col items-center gap-30 mt-20">
         <header className="bg-green-500 py-10 mt-5">
             <h1 className="text-white text-center font-extrabold text-6xl">Gig Mates</h1>
         </header>
@@ -67,6 +69,7 @@ export default function Login() {
                 <div
                 className="mb-10">
                     <input
+                        className="input-field"
                         placeholder="email"
                         id="email"
                         type="text"
@@ -76,6 +79,7 @@ export default function Login() {
                 </div>
                 <div  className="mb-10">
                     <input
+                        className="input-field"
                         placeholder="password"
                         id="password"
                         type="password"

@@ -70,29 +70,29 @@ export default function Password(props) {
     };
 
     return (
-    <div>
-        <div>
+    <div className="flex flex-col w-full items-center gap-6">
+        <div className="flex flex-col items-center w-[100%]">
             <input
             placeholder="password"
                 id="password"
                 type="password"
                 value={password}
                 onChange={handlePassword}
-                className="border-black border-2 rounded-lg px-2 "
+                className="input-field"
             />
             <div>
               {passwordRequirements.map((requirement, index) => <p key={index}>{requirement}</p>)}
             </div>
             
         </div>
-        <div>
+        <div className="flex flex-col items-center w-[100%]">
             <input
                 placeholder="confirm password"
                 id="confirmPassword"
                 type="password"
                 value={confirmPassword}
                 onChange={handleConfirmPassword}
-                className="border-black border-2 rounded-lg px-2 "
+                className="input-field "
             />
             {passwordMatchMessage}
         </div>

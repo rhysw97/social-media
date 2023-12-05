@@ -111,14 +111,14 @@ export default function Register() {
 
     return(
        <div>
-            <h2 className="text-4xl text-center my-10" >Register</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center">  
+            <h1 className="heading" >Register</h1>
+            <form onSubmit={handleSubmit} className="flex ml-16 w-full gap-4 flex-col items-center">  
             <input
                 placeholder="Username"
                 id="username"
                 type="text"
                 ref={usernameRef}
-                className="border-black border-2 rounded-lg px-2 "
+                className="input-field "
             />
             {usernameUsed}
                 
@@ -127,23 +127,23 @@ export default function Register() {
                 id="email"
                 type="text"
                 onChange={handleEmail}
-                className="border-black border-2 rounded-lg px-2 my-3"
+                className="input-field my-3"
             />
             {emailUsed}
             {emailMessage}
               
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center w-[100%]">
                 <label for="dob" className="text-center">Date Of Birth</label>
                 <input
                     id="dob"
                     type="date"
                     onChange={handleDateOfBirth}
-                    className="border-black border-2 rounded-lg px-2 m-t mb-3"
+                    className="input-field mb-3"
                 />
                 {ageMessage}
             </div>
                 <Password setPasswordState={setUserPassword} setIsPasswordValid={setCurrentIsValid}/>
-                <button type="submit">Submit</button>
+                <button className="button-green" type="submit">Submit</button>
             </form>
        </div>
     )
