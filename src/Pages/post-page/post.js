@@ -32,17 +32,17 @@ export default function Post(props) {
     }
 
     return(
-        <div className="flex-col bg-slate-300 rounded-md shadow-xl" >
+        <div className="flex-col pl-[20px] bg-slate-300 rounded-md shadow-xl" >
             <div className="flex mt-1">
                 <div className="rounded-full h-20 w-20 mt-2 mb-2 mr-2 ml-1">
                     <img className="w-20 h-20  bg-black rounded-full" src={`./uploads/${postData.profilePicture}`}/>
                 </div>
                 <p className="">{postData.username}</p>
             </div>
-            <p className="">{postData.content}</p>
+            <p className="ml-[30px]">{postData.content}</p>
             {editPostButton}
             <div className="">
-                <Likes likes ={postData.likes} post={postData}></Likes>
+                <Likes className= "ml-[30px] mr-[50px]"likes ={postData.likes} post={postData}></Likes>
                 <p className="open-modal button-green m-auto" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
                 <Modal show={commentsModalActive} close={()=> setCommentsModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>
                 <Modal show={deleteModalActive} close={()=> setDeleteModalActive(false)} content={<DeletePost id={postData.id}/>} title={"Delete"}/> 

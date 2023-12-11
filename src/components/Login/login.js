@@ -60,33 +60,33 @@ export default function Login() {
     return(
         <div style={{
             backgroundImage: './../../assets/images/gig-picture.jpg',
-        }}className="bg-green-500 flex flex-col items-center gap-30 mt-20">
-        <header className="bg-green-500 py-10 mt-5">
-            <h1 className="text-white text-center font-extrabold text-6xl">Gig Mates</h1>
-        </header>
-          <h2 className="text-4xl mb-20">Login</h2>
-           <form  className="flex flex-col items-center justify-evenly h-100" onSubmit={handleSubmit}>
-                <div
-                className="mb-10">
-                    <input
-                        className="input-field"
-                        placeholder="email"
-                        id="email"
-                        type="text"
-                        value={email}
-                        onChange={handleEmail}
-                    />
-                </div>
-                <div  className="mb-10">
-                    <input
-                        className="input-field"
-                        placeholder="password"
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={handlePassword}
-                    />
-                </div>
+        }}className=" flex flex-col items-center w-[100%] gap-30">
+            <header className="flex flex-col w-[100%] items-center">
+                <h1 className="heading ">Gig Mates</h1>
+            </header>
+            <h2 className="text-4xl ml-16 mb-20">Login</h2>
+            <form  className="flex flex-col items-center justify-evenly h-100 w-[100%] ml-16"  onSubmit={handleSubmit}>
+            <div className="mb-10 w-[100%] flex flex-col items-center">
+                <input
+                    className="input-field"
+                    placeholder="email"
+                    id="email"
+                    type="text"
+                    value={email}
+                    onChange={handleEmail}
+                />
+            </div>
+
+            <div  className="mb-10 w-[100%] flex flex-col items-center">
+                <input
+                    className="input-field"
+                    placeholder="password"
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={handlePassword}
+                />
+            </div>
                 <button type="submit">Submit</button>
                 {loginMessage}
             </form>

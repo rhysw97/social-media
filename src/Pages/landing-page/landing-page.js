@@ -23,7 +23,7 @@ export default function LandingPage() {
 
     return(
         <div className="flex flex-col">
-            <div className=" mt-10 bg-slate-900 w-480" styles={{background: `url(${backgroundImage})`}}>
+            <div className="w-[100%]" styles={{background: `url(${backgroundImage})`}}>
                 {view}
             </div>
         </div>
