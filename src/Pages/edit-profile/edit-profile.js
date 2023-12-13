@@ -1,15 +1,30 @@
 import { getRequest, postRequest, formPostRequest } from "../../utils/server-queries.ts";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Tags from '../../components/Tags/Tags.js'
 export default function EditProfile() {
 
     const [name, setName] = useState("");
     const [image, setImage] = useState();
     const [bio, setBio] = useState("");
-    const [genres, setGenres] = useState(["alternative", "rock", "hip-hop", "jazz"]);
+    const [genres, setGenres] = useState([]);
     const [isFilePicked, setIsFilePicked] = useState(false);
-    
+    useEffect(() => {
+        getGenres()
+    },[])
+    async function getGenres() {
+        const response = await getRequest('profile/get-profile')
+
+        setGenres(() => response.genres)
+        
+    }
+
+    function removeItem() {
+
+    }
+   
     const handleSubmit = (e) => {
+        console.log('hi', genres)
         console.log('submitted')
         e.preventDefault();
         console.log(image)
@@ -19,11 +34,13 @@ export default function EditProfile() {
         formData.append('name', name)
         formData.append('bio', bio)
         formData.append('genres', genres)  
+        console.log(formData)
         
         fetch('/profile/edit', {
             method: 'POST',
             body: formData,
         });
+       
     };
 
     const handleChange = (e) => {
@@ -33,10 +50,10 @@ export default function EditProfile() {
     };
   
     return (
-      <div className="flex flex-col mx-auto" >
+      <div className="flex flex-col  w-[100%] mx-auto" >
         <h1 className="heading">Edit Profile</h1>
         <div className="flex items-center flex-col">
-            <form  className="w-[60%]" onSubmit={handleSubmit}>
+            <form  className="w-[60%] flex flex-col items-center" onSubmit={handleSubmit}>
                 <input
                 placeholder="Name"
                 name='name'
@@ -44,15 +61,34 @@ export default function EditProfile() {
                 onChange={(e) => setName(e.target.value)}
                 required
                 />
+                <div>
+                    <label 
+                        className="
+                            block mb-2 text-sm font-medium 
+                            text-gray-900 dark:text-white
+                        " 
+                        htmlFor="file_input"
+                    >Upload file</label>
 
-                <input
-                name='file'
-                type="file"
-                accept="image/*"
-                onChange={handleChange}
-                required
-                />
-
+                    <input
+                    className="
+                        block w-full text-sm 
+                        text-gray-900 border 
+                        border-gray-300 r[ounded-lg 
+                        cursor-pointer ]
+                        bg-gray-50 dark:text-gray-400 
+                        focus:outline-none dark:bg-gray-700 
+                        dark:border-gray-600 dark:placeholder-gray-400
+                    "
+                    name='file'
+                    type="file"
+                    id="file_input"
+                    accept="image/*"
+                    onChange={handleChange}
+                    required
+                    />
+                </div>
+               
                 <input
                 placeholder="Bio"
                 name='bio'
@@ -62,18 +98,8 @@ export default function EditProfile() {
 
                 <div>
                 <h2>Pick your favourite Genres</h2>
-                {genres.map((genre) => (
-                    <div key={genre}>
-                        <label htmlFor={genre}>{genre}</label>
-                        <input
-                            name="genres"
-                            type="checkbox"
-                            value={genre}
-                            checked={genres.includes(genre)}
-                            onChange={(e) => setGenres(e.target.checked ? [...genres, genre] : genres.filter(g => g !== genre))}
-                        />
-                    </div>
-                ))}
+                <Tags genres={genres} callback={setGenres} serverCall={removeItem}></Tags>
+                {console.log(genres)}
                 </div>
                 <button type="submit" >Submit</button>
             </form>

@@ -1,4 +1,3 @@
-import './App.css';
 import React, {useState, useRef} from 'react';
 
 function Tags(props) {
@@ -13,16 +12,17 @@ function Tags(props) {
       setTags(currentValues => {
         return currentValues.filter(tagToCheck => tagToCheck !== tag)
       })
+      props.callback(() => tags)
+      props.serverRequest()
   }
   
   function addTag() {
-    console.log('add')
     const inputValue = inputRef.current.value
     
     if(doesTagExist(inputValue)) {
-      console.log(1, inputValue, tags)
       setTags(currentTags => [... currentTags, inputValue])
-      console.log(2, inputValue, tags)
+      inputRef.current.value = ''
+      props.callback(() => tags)
     }
 
     else {
