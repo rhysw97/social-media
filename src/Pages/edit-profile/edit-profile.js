@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Tags from '../../components/Tags/Tags.js'
 export default function EditProfile() {
-
+        //profile inputs
     const [name, setName] = useState("");
     const [image, setImage] = useState();
     const [bio, setBio] = useState("");
@@ -12,6 +12,7 @@ export default function EditProfile() {
     useEffect(() => {
         getGenres()
     },[])
+    
     async function getGenres() {
         const response = await getRequest('profile/get-profile')
 
@@ -55,6 +56,7 @@ export default function EditProfile() {
         <div className="flex items-center flex-col">
             <form  className="w-[60%] flex flex-col items-center" onSubmit={handleSubmit}>
                 <input
+                className="input-field"
                 placeholder="Name"
                 name='name'
                 value={name}
@@ -90,8 +92,10 @@ export default function EditProfile() {
                 </div>
                
                 <input
+                className="text-field h-18"
                 placeholder="Bio"
                 name='bio'
+                type="text"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 />

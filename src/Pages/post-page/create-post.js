@@ -45,16 +45,18 @@ export default function CreatePost() {
     return(
         <div className='' >
             <header className='flex justify-center'>
-                <h1 className='text-5xl'>Feed</h1>
+                <h1 className='text-5xl heading'>Feed</h1>
             </header>
-            <Logout />
-            
-            <div className=" flex flex-col w-3/6  mx-auto gap-6">
-                {posts.map((post, index) => <Post key={post.id} post={post} />)}
-            </div>
-            <div className ="flex flex-col w-60  mt-10 mx-auto">
-                <input className="border-black border-2 rounded-lg px-2 my-3"id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
-                <p onClick={newPost}>Post</p>
+            <div className='ml-16'>
+                <Logout />
+                
+                <div className=" flex flex-col w-3/6  mx-auto gap-6">
+                    {posts.map((post, index) => <Post key={post.id} post={post} />)}
+                </div>
+                <div className ="flex flex-col w-60  mt-10 mx-auto">
+                    <input className="border-black border-2 rounded-lg px-2 my-3"id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
+                    <p onClick={newPost}>Post</p>
+                </div>
             </div>
         </div>
     )

@@ -47,11 +47,11 @@ export default function Likes(props) {
     return(
         <div>
             <div className='flex justify-between'>
-                <div className="flex gap-1">
+                <div className="flex gap-1 button-green w-[30%] justify-center">
                     <p onClick={handleLikes}>{likeMessage}</p>
-                    <p>{likes}</p>
+                    <p className="">{likes}</p>
                 </div>
-                <LikedBy likedBy={likedBy}/>
+                <LikedBy  className="button-green" likedBy={likedBy}/>
             </div>
         </div>
     )

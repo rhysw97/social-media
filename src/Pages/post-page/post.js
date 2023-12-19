@@ -14,7 +14,7 @@ export default function Post(props) {
     const {usernameContext, setUsernameContext} = useContext(USERNAME)
     const postData = props.post
     console.table(postData)
-    let editPostButton = null;
+    let posterButtons = null;
     const username = usernameContext
   
     useEffect(() => {
@@ -22,26 +22,26 @@ export default function Post(props) {
         
     }, [])
     if(postData.username === username) {
-        editPostButton = 
-            <div className="flex  justify-between">
-                <p onClick={()=> setEditModalActive(true)}>Edit</p>
-                <p onClick={()=> setDeleteModalActive(true)}>Delete</p>
+        posterButtons = 
+            <div className="flex mb-6 justify-between">
+                <p className="button-green" onClick={()=> setEditModalActive(true)}>Edit</p>
+                <p className="button-green mr-4" onClick={()=> setDeleteModalActive(true)}>Delete</p>
             </div>
     } else {
-        editPostButton = null
+        posterButtons = null
     }
 
     return(
-        <div className="flex-col pl-[20px] bg-slate-300 rounded-md shadow-xl" >
+        <div className="flex-col pl-[20px] bg-slate-300 rounded-md shadow-xl gap-6" >
             <div className="flex mt-1">
-                <div className="rounded-full h-20 w-20 mt-2 mb-2 mr-2 ml-1">
-                    <img className="w-20 h-20  bg-black rounded-full" src={`./uploads/${postData.profilePicture}`}/>
+                <div className="rounded-full h-[50px] w-[50px] mt-2 mb-2 mr-2 ml-1">
+                    <img className="w-[50px] h-[50px]  bg-black rounded-full" src={`./uploads/${postData.profilePicture}`}/>
                 </div>
-                <p className="">{postData.username}</p>
+                <p className="mx-8 pt-1 text-2xl">{postData.username}</p>
             </div>
-            <p className="ml-[30px]">{postData.content}</p>
-            {editPostButton}
-            <div className="">
+            <p className="ml-[30px] text-lg my-2">{postData.content}</p>
+            {posterButtons}
+            <div className="flex flex-col gap-6">
                 <Likes className= "ml-[30px] mr-[50px]"likes ={postData.likes} post={postData}></Likes>
                 <p className="open-modal button-green m-auto" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
                 <Modal show={commentsModalActive} close={()=> setCommentsModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>

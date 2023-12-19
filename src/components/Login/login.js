@@ -60,37 +60,46 @@ export default function Login() {
     return(
         <div style={{
             backgroundImage: './../../assets/images/gig-picture.jpg',
-        }}className=" flex flex-col items-center w-[100%] gap-30">
-            <header className="flex flex-col w-[100%] items-center">
-                <h1 className="heading ">Gig Mates</h1>
+        }} className="  flex flex-col ml-16 w-[100%] gap-30">
+            <header className=" flex flex-col w-[100%] items-center mx-auto">
+                <h1 className="heading mx-auto ">Gig Mates</h1>
             </header>
-            <h2 className="text-4xl ml-16 mb-20">Login</h2>
-            <form  className="flex flex-col items-center justify-evenly h-100 w-[100%] ml-16"  onSubmit={handleSubmit}>
-            <div className="mb-10 w-[100%] flex flex-col items-center">
-                <input
-                    className="input-field"
-                    placeholder="email"
-                    id="email"
-                    type="text"
-                    value={email}
-                    onChange={handleEmail}
-                />
-            </div>
+            
+            <div className="flex sm:flex-row items-center w-[100%] flex-col"> 
+                <form  className="flex flex-col items-center justify-evenly h-100 w-[60%] gap-8"  onSubmit={handleSubmit}>
+                    <h2 className="text-4xl gothic mb-4">Login</h2>
+                    <input
+                        className="input-field"
+                        placeholder="email"
+                        id="email"
+                        type="text"
+                        value={email}
+                        onChange={handleEmail}
+                    />
+            
 
-            <div  className="mb-10 w-[100%] flex flex-col items-center">
-                <input
-                    className="input-field"
-                    placeholder="password"
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={handlePassword}
-                />
+                    <input
+                        className="input-field"
+                        placeholder="password"
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={handlePassword}
+                    />
+                    <button type="submit" className="button-green">Submit</button>
+                    {loginMessage}
+                </form>
+
+                <article className="w-[30%] flex flex-col items-center gap-[1.8rem] mt-2">
+                    <h2 className="text-4xl gothic mb-4 w-full text-center">About</h2>
+                    <p className="gothic text-2xl mb-4">Bringing people together through live music </p>
+                    <p className="gothic">We hope to help people make new connections to help make live music more accessable </p>
+                    <p className="gothic text-center">Not Registered? </p>
+                    <a className="gothic button-green px-2 py-1" onClick={()=> {navigate('/register')}}>Sign Up</a>
+                </article>
             </div>
-                <button type="submit">Submit</button>
-                {loginMessage}
-            </form>
-            <p>Not Registered? <a onClick={()=> {navigate('/register')}}>click here</a> to sign up</p>
+            
+
        </div>
     )
 }
