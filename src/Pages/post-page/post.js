@@ -32,7 +32,7 @@ export default function Post(props) {
     }
 
     return(
-        <div className="flex-col pl-[20px] bg-slate-300 rounded-md shadow-xl gap-6" >
+        <div className="flex-col pl-[20px] bg-slate-300 rounded-md shadow-xl shadow-slate-600 gap-6" >
             <div className="flex mt-1">
                 <div className="rounded-full h-[50px] w-[50px] mt-2 mb-2 mr-2 ml-1">
                     <img className="w-[50px] h-[50px]  bg-black rounded-full" src={`./uploads/${postData.profilePicture}`}/>
@@ -43,7 +43,7 @@ export default function Post(props) {
             {posterButtons}
             <div className="flex flex-col gap-6">
                 <Likes className= "ml-[30px] mr-[50px]"likes ={postData.likes} post={postData}></Likes>
-                <p className="open-modal button-green m-auto" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
+                <p className="open-modal button-green mx-auto mb-2" onClick={()=> {setCommentsModalActive(true)}}>comments</p>
                 <Modal show={commentsModalActive} close={()=> setCommentsModalActive(false)} content={<PostComment id={postData.id}/>} title={"Comments"}/>
                 <Modal show={deleteModalActive} close={()=> setDeleteModalActive(false)} content={<DeletePost id={postData.id}/>} title={"Delete"}/> 
                 <Modal show={editModalActive} close={()=> setEditModalActive(false)} content={<EditPost id={postData.id} content={postData.content}/>} title={"Edit"}/>  

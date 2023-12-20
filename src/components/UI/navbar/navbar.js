@@ -1,6 +1,6 @@
 import NavbarIcon from "./navbar-icon"
 import {BsPlus, BsFillLightningFill, BsGearFill} from 'react-icons/bs'
-import {FaFire, FaPoo} from 'react-icons/fa'
+import {FaFire, FaPoo, FaAccusoft, FaSignOutAlt} from 'react-icons/fa'
 
 export default function Navbar() {
 
@@ -12,6 +12,8 @@ export default function Navbar() {
             <NavbarIcon icon={<BsPlus size="32" />} path={'/edit-profile'} text='Edit Profile'/>
             <NavbarIcon icon={<BsFillLightningFill size="20" />} path={'/post'} text='Feed' />
             <NavbarIcon icon={<FaPoo size="20" />} text='Landing Page'/>
+            <NavbarIcon icon={<FaSignOutAlt size="20" />} path={'/events'} text='Events'/>
+
         </div>
     )
 }

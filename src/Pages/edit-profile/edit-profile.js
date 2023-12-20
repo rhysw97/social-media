@@ -53,7 +53,7 @@ export default function EditProfile() {
     return (
       <div className="flex flex-col  w-[100%] mx-auto" >
         <h1 className="heading">Edit Profile</h1>
-        <div className="flex items-center flex-col">
+        <div className="flex items-center flex-col ml-16">
             <form  className="w-[60%] flex flex-col items-center" onSubmit={handleSubmit}>
                 <input
                 className="input-field"
@@ -76,8 +76,8 @@ export default function EditProfile() {
                     className="
                         block w-full text-sm 
                         text-gray-900 border 
-                        border-gray-300 r[ounded-lg 
-                        cursor-pointer ]
+                        border-gray-300 rounded-lg 
+                        cursor-pointer
                         bg-gray-50 dark:text-gray-400 
                         focus:outline-none dark:bg-gray-700 
                         dark:border-gray-600 dark:placeholder-gray-400
@@ -92,7 +92,7 @@ export default function EditProfile() {
                 </div>
                
                 <input
-                className="text-field h-18"
+                className="border-black border-2 h-20 placeholder:translate-y-20"
                 placeholder="Bio"
                 name='bio'
                 type="text"
@@ -105,7 +105,7 @@ export default function EditProfile() {
                 <Tags genres={genres} callback={setGenres} serverCall={removeItem}></Tags>
                 {console.log(genres)}
                 </div>
-                <button type="submit" >Submit</button>
+                <button className="button-green" type="submit" >Submit</button>
             </form>
         </div>
       </div>
