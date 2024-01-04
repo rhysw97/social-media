@@ -40,20 +40,20 @@ export default function Events() {
         <div className="h-20">
             <h1 className="heading">Events</h1>
 
-            <div className="ml-16 flex flex-row w-[100%] flex-wrap">
+            <div className="ml-16 flex flex-row w-[100%] flex-wrap text-white">
                 <div className="mx-5">
                     <div className="flex flex-row gap-2 flex-wrap w-[100%]">
                         {events.map(event => {
-                            return (<div className="basis-[45%] justify-around bg-slate-500 mx-auto">
+                            return (<div className="basis-[45%] justify-around bg-green-500 rounded-2xl mx-auto p-4">
                                 <div className="flex flex-col">
                                     <img className="w-[100%] h-[250px] object-cover" src={event.img }></img>
-                                    <h2 className="">{event.artist}</h2>
+                                    <h2 className="text-center text=shadow-lg py-4 font-bold text-3xl">{event.artist}</h2>
                                     
                                 </div>
-                                <p>{event.location}</p>
-                                <div className="w-[100%]flex row">
-                                    <div className="flex flex-row"><FaCalendar></FaCalendar><p>{event.date}</p></div>
-                                    <div className="flex flex-row"><FaClock></FaClock><p>{event.time}</p></div>
+                                <p className="text-center">{event.location}</p>
+                                <div className="w-[100%] flex flex-row my-4">
+                                    <div className="flex flex-col items-center basis-1/2"><FaCalendar></FaCalendar><p>{event.date}</p></div>
+                                    <div className="flex flex-col items-center basis-1/2"><FaClock></FaClock><p>{event.time}</p></div>
 
                                 </div>
                             </div>)
