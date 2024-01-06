@@ -61,13 +61,24 @@ export default function Login() {
         <div style={{
             backgroundImage: './../../assets/images/gig-picture.jpg',
         }} className="  flex flex-col ml-16 w-[100%] gap-30">
-            <header className=" flex flex-col w-[100%] items-center mx-auto">
-                <h1 className="heading mx-auto ">Gig Mates</h1>
+            <header className=" flex flex-col w-[100%] items-center mx-auto my-0">
+                <h1 className="heading mx-auto my-0">Gig Mates</h1>
             </header>
-            
-            <div className="flex sm:flex-row items-center w-[100%] flex-col"> 
-                <form  className="flex flex-col items-center justify-evenly h-100 w-[60%] gap-8"  onSubmit={handleSubmit}>
-                    <h2 className="text-4xl gothic mb-4">Login</h2>
+
+            <div className="fixed -z-20 min-h-screen w-screen top-0 left-0" style={{
+                backgroundImage: `url(https://www.lastminutemusicians.com/how_to_get_gigs/wp-content/uploads/2012/04/Live-gig.jpg)`,
+                filter: 'blur(8px)',
+                zIndex: '-10',
+            }}></div>
+            <div className="fixed -z-10 min-h-screen w-screen top-0 left-0 bg-black opacity-40" ></div>
+
+            <div className="flex sm:flex-row items-center w-[100%] min-h-screen flex-col text-white ">
+                <section className="w-[30%] flex flex-col items-center gap-[1.8rem] mt-2">
+                    <p className="gothic text-2xl mb-4">Bringing people together through live music </p>
+                </section> 
+
+                <form  className="flex flex-col items-center justify-evenly h-100 w-[60%] gap-8 text-black"  onSubmit={handleSubmit}>
+                    <h2 className="text-4xl gothic mb-4 text-white">Login</h2>
                     <input
                         className="input-field"
                         placeholder="email"
@@ -77,7 +88,6 @@ export default function Login() {
                         onChange={handleEmail}
                     />
             
-
                     <input
                         className="input-field"
                         placeholder="password"
@@ -87,16 +97,12 @@ export default function Login() {
                         onChange={handlePassword}
                     />
                     <button type="submit" className="button-green">Submit</button>
+                    <p className="gothic text-center text-white">Not Registered? </p>
+                    <a className="gothic button-green px-2 py-1" onClick={()=> {navigate('/register')}}>Sign Up</a>
                     {loginMessage}
                 </form>
 
-                <article className="w-[30%] flex flex-col items-center gap-[1.8rem] mt-2">
-                    <h2 className="text-4xl gothic mb-4 w-full text-center">About</h2>
-                    <p className="gothic text-2xl mb-4">Bringing people together through live music </p>
-                    <p className="gothic">We hope to help people make new connections to help make live music more accessable </p>
-                    <p className="gothic text-center">Not Registered? </p>
-                    <a className="gothic button-green px-2 py-1" onClick={()=> {navigate('/register')}}>Sign Up</a>
-                </article>
+                
             </div>
             
 
