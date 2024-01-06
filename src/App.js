@@ -20,7 +20,8 @@ function App() {
     <BrowserRouter>
       <USERNAME.Provider value={{usernameContext, setUsernameContext}}>
       <LOGGEDIN.Provider value={{loggedInContext, setLoggedInContext}}>
-        <div className="App">
+        <div className='bg-slate-400 min-h-screen'>
+        <div className="relative max-w-[1480px] mx-auto bg-white min-h-screen">
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/register" element={<Register/>} />
@@ -32,6 +33,7 @@ function App() {
               </Route>
           </Routes>
           <Navbar/>
+        </div>
         </div>
       </LOGGEDIN.Provider>
       </USERNAME.Provider>
