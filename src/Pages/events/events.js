@@ -39,7 +39,9 @@ export default function Events() {
 
     return (
         <div className="gothic text-white">
-            <h1 className="heading">Events</h1>
+            <header className='flex justify-center'>
+                <h1 className='text-5xl heading'>Events</h1>
+            </header>
 
             <div className="ml-16 flex flex-row w-[100%] flex-wrap">
                     <div className="flex flex-row gap-2 flex-wrap w-[100%]">

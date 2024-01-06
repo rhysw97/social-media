@@ -43,7 +43,7 @@ export default function CreatePost() {
     }
 
     return(
-        <div className='' >
+        <div className='gothic' >
             <header className='flex justify-center'>
                 <h1 className='text-5xl heading'>Feed</h1>
             </header>
