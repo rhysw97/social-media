@@ -39,7 +39,9 @@ export default function Post(props) {
                 </div>
                 <p className="mx-8 pt-1 text-2xl">{postData.username}</p>
             </div>
-            <p className="ml-[30px] text-lg my-2">{postData.content}</p>
+            <div className="my-[10px] min-h-[100px] flex align-middle">
+                <p className="ml-[30px] my-auto text-lg">{postData.content}</p>
+            </div>
             {posterButtons}
             <div className="flex flex-col gap-6">
                 <Likes className= "ml-[30px] mr-[50px]"likes ={postData.likes} post={postData}></Likes>
