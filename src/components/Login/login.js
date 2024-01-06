@@ -2,6 +2,7 @@ import React,{useState, useContext} from "react";
 import { postRequest } from "../../utils/server-queries.ts";
 import {BrowserRouter, useNavigate} from 'react-router-dom';
 import {USERNAME, LOGGEDIN} from '../../data/contexts.js'
+import image from './../../assets/images/Live-gig.jpg'
 
 
 
@@ -65,8 +66,8 @@ export default function Login() {
                 <h1 className="heading mx-auto my-0">Gig Mates</h1>
             </header>
 
-            <div className="fixed -z-20 min-h-screen w-screen top-0 left-0" style={{
-                backgroundImage: `url(https://www.lastminutemusicians.com/how_to_get_gigs/wp-content/uploads/2012/04/Live-gig.jpg)`,
+            <div className="fixed min-h-screen w-screen top-0 left-0" style={{
+                backgroundImage: 'url(https://www.lastminutemusicians.com/how_to_get_gigs/wp-content/uploads/2012/04/Live-gig.jpg)',
                 filter: 'blur(8px)',
                 zIndex: '-10',
             }}></div>
