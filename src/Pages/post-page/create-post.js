@@ -53,8 +53,8 @@ export default function CreatePost() {
                 <div className=" flex flex-col w-3/6  mx-auto gap-6">
                     {posts.map((post, index) => <Post key={post.id} post={post} />)}
                 </div>
-                <div className ="flex flex-col w-60  mt-10 mx-auto">
-                    <input className="border-black border-2 rounded-lg px-2 my-3"id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
+                <div className ="flex flex-col items-center mt-10 mx-auto fixed bottom-0 w-[100%] bg-green-400">
+                    <input className="border-black border-2 w-40 rounded-lg px-2 my-3"id="postBox" type="text" placeholder="What is on your mind" ref={postInputRef}/>
                     <p onClick={newPost}>Post</p>
                 </div>
             </div>
