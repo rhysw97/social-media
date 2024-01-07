@@ -3,42 +3,61 @@ import   {BlackMassImage, HamishHawkImage, QuelleChrisImage } from "./../../asse
 import { FaCalendar, FaClock, FaLocationArrow, FaPlus} from "react-icons/fa";
 import CreateEvent from './create-event'   
 import Modal from './../../components/UI/modal/modal';        
+import { getRequest } from "../../utils/server-queries.ts";
 
 
 export default function Events() {
-
-    const [events, setEvents] = useState([])
     const [createEventModalActive, setCreateEventModalActive] = useState(false)
+    const [events, setEvents] = useState([ 
+        
+    ])
+
+    async function getEvents() {
+        const data = await getRequest('events/getEvents')
+
+        setEvents([
+            {
+            artist: 'Black Mass',
+            location: 'O2 Academy- Bristol',
+            date: '24th Sep 2024',
+            time: '19:00',
+            img: BlackMassImage
+            
+        },
+        {
+            artist: 'Quelle Chris',
+            location: 'London Roundhouse',
+            date: '7th Mar 2024',
+            time: '18:00',
+            img: QuelleChrisImage
+            
+        },
+        {
+            artist: 'Hamish Hawk',
+            location: 'O2 Academy- Brixton',
+            date: '19th Aug 2024',
+            time: '18:30',
+            img: HamishHawkImage
+            
+        }
+    ])
+
+        data.forEach(event => (
+            setEvents(currentEvents => [...currentEvents, {
+            
+                id: event._id,
+                artist: event.artist,
+                genre: event.genre,
+                location: event.location,
+                date: event.date,
+                time: event.time,
+                img: event.eventPicture
+            }])
+        ))
+    }
 
     useEffect(() => {
-        setEvents(() => {
-            return [
-                {
-                    artist: 'Black Mass',
-                    location: 'O2 Academy- Bristol',
-                    date: '24th Sep 2024',
-                    time: '19:00',
-                    img: BlackMassImage
-                    
-                },
-                {
-                    artist: 'Quelle Chris',
-                    location: 'London Roundhouse',
-                    date: '7th Mar 2024',
-                    time: '18:00',
-                    img: QuelleChrisImage
-                    
-                },
-                {
-                    artist: 'Hamish Hawk',
-                    location: 'O2 Academy- Brixton',
-                    date: '19th Aug 2024',
-                    time: '18:30',
-                    img: HamishHawkImage
-                    
-                }
-            ]
-        })
+        getEvents()
     },[])
 
     return (
