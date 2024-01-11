@@ -10,6 +10,7 @@ import EditProfile from './Pages/edit-profile/edit-profile';
 import ProfilePage from './Pages/Profile/profile-page';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Events from './Pages/events/events';
+import CreateEventPost from './Pages/post-page/create-event-post';
 
 //allow user to post
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/profile" element={<ProfilePage/>} />
                 <Route path="/edit-profile" element={<EditProfile/>} />
                 <Route path="/events" element={<Events/>} />
+                <Route path="/event-feed" element={<CreateEventPost/>} />
               </Route>
           </Routes>
           <Navbar/>

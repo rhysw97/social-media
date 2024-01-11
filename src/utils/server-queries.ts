@@ -25,7 +25,9 @@ export async function formPostRequest(endpoint: string, data: FormData) {
     return responseData
 }
 export async function getRequest(endpoint: string, auth: string ='') {
-    const responseData = await fetch(`${endpoint}`, {
+    const responseData = await fetch(`${endpoint}`, 
+    
+    {
         method: 'GET',
         headers: {
             'Authorization': auth

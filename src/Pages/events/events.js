@@ -4,13 +4,11 @@ import { FaCalendar, FaClock, FaLocationArrow, FaPlus} from "react-icons/fa";
 import CreateEvent from './create-event'   
 import Modal from './../../components/UI/modal/modal';        
 import { getRequest } from "../../utils/server-queries.ts";
-
+import Event from './event.js'
 
 export default function Events() {
     const [createEventModalActive, setCreateEventModalActive] = useState(false)
-    const [events, setEvents] = useState([ 
-        
-    ])
+    const [events, setEvents] = useState([])
 
     async function getEvents() {
         const data = await getRequest('events/getEvents')
@@ -18,6 +16,7 @@ export default function Events() {
         setEvents([
             {
             artist: 'Black Mass',
+            id: '0',
             location: 'O2 Academy- Bristol',
             date: '24th Sep 2024',
             time: '19:00',
@@ -26,6 +25,7 @@ export default function Events() {
         },
         {
             artist: 'Quelle Chris',
+            id: '1',
             location: 'London Roundhouse',
             date: '7th Mar 2024',
             time: '18:00',
@@ -34,6 +34,7 @@ export default function Events() {
         },
         {
             artist: 'Hamish Hawk',
+            id: '2',
             location: 'O2 Academy- Brixton',
             date: '19th Aug 2024',
             time: '18:30',
@@ -41,10 +42,10 @@ export default function Events() {
             
         }
     ])
-
-        data.forEach(event => (
+        data.forEach(event => {
+            console.log(event._id)
             setEvents(currentEvents => [...currentEvents, {
-            
+
                 id: event._id,
                 artist: event.artist,
                 genre: event.genre,
@@ -53,11 +54,12 @@ export default function Events() {
                 time: event.time,
                 img: event.eventPicture
             }])
-        ))
+        })
     }
 
     useEffect(() => {
         getEvents()
+
     },[])
 
     return (
@@ -69,18 +71,7 @@ export default function Events() {
             <div className="ml-16 flex flex-row w-[100%] flex-wrap">
                 <div className="flex flex-row gap-2 flex-wrap w-[100%]">
                     {events.map(event => {
-                        return (<div className="basis-[45%] justify-around bg-green-500 p-4 rounded-lg mx-auto shadow-black shadow-md">
-                            <div className="flex flex-col">
-                                <img className="w-[100%] h-[250px] object-cover" src={event.img }></img>
-                                <h2 className="text-center text-shadow-lg py-5 font-extrabold text-4xl">{event.artist}</h2>
-                                
-                            </div>
-                            <p className="text-center text-xl font-semibold">{event.location}</p>
-                            <div className="w-[100%] flex flex-row my-4">
-                                <div className="flex flex-col items-center basis-1/2"><FaCalendar></FaCalendar><p>{event.date}</p></div>
-                                <div className="flex flex-col items-center basis-1/2"><FaClock></FaClock><p>{event.time}</p></div>
-                            </div>
-                        </div>)
+                        return <Event key={event.id} event={event}/>
                     })}
                     
                 </div>

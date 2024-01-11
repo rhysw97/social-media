@@ -13,12 +13,10 @@ export default function Post(props) {
     const [deleteModalActive, setDeleteModalActive] = useState(false);
     const {usernameContext, setUsernameContext} = useContext(USERNAME)
     const postData = props.post
-    console.table(postData)
     let posterButtons = null;
     const username = usernameContext
   
     useEffect(() => {
-        console.log('username', username)
         
     }, [])
     if(postData.username === username) {
