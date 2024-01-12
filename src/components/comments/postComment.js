@@ -52,9 +52,9 @@ export default function PostComment(props) {
     if(comments) {
         return (
             <div className="h-screen">
-                <div className="comments h-4/5 overflow-scroll">
+                <div className="comments flex flex-col gap-10">
                     {comments.map((comment, index) => {
-                        return <div className="" key={index}>
+                        return <div className="bg-white w-[90%] m-auto rounded-xl p-10" key={index}>
                            <div className="flex items-center">
                                 <img className="w-20 h-20" />
                                 <h2>{comment.user}</h2>
@@ -63,8 +63,10 @@ export default function PostComment(props) {
                         </div>
                     })}
                 </div>
-                <input placeholder="add comment" ref={commentInputRef}/>
-                <button onClick={commentOnPost}>Send</button>
+                <div className="fixed w-[100%] bottom-0 ">
+                    <textarea className="border-black border-2 w-[70%] text-lg rounded-lg px-2 my-3" placeholder="add comment" ref={commentInputRef}/>
+                    <button onClick={commentOnPost}>Send</button>
+                </div>
             </div>
         ) 
     } 

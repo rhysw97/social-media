@@ -8,12 +8,12 @@ export default function Modal(props) {
     }
 
     return (
-        <div className='fixed top-0 left-0 h-screen w-screen bg-gray-700 flex items-center justify-center z-100' onClick={props.close}>
-            <div className=' bg-gray-400 rounded-lg ' onClick= {event => event.stopPropagation()}>
+        <div className='fixed top-0 left-0 h-screen w-screen bg-gray-700 flex items-center justify-center z-50' onClick={props.close}>
+            <div className=' bg-gray-400 h-screen w-[80%] ' onClick= {event => event.stopPropagation()}>
                 <div className='modal-header'>
                     <h1>{props.title}</h1>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body h-[100%]">
                     {props.content}
                 
                 </div>
