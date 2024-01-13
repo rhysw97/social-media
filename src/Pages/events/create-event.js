@@ -31,13 +31,13 @@ export default function CreateEvent() {
     }
 
     return(
-        <form className="flex flex-col items-center text-black">
+        <form className="flex flex-col items-center text-black h-screen justify-evenly">
             <input className="input-field" placeholder="Artist Name" ref={artistInputRef} required/>
             <input className="input-field" placeholder="Genre" ref={genreInputRef} required/>
             <input className="input-field" placeholder="Location" ref={locationInputRef} required/>
             <input className="input-field" placeholder="Event Image Link" ref={imageInputRef} required/>
             <input className="input-field" type="date" ref={dateInputRef} required/>
-            <input className="" type="time" ref={timeInputRef} required/>
+            <input className="input-field text-center" type="time" ref={timeInputRef} required/>
 
             <button className="button-green" type="submit" onClick={handleSubmit}>Create Event</button>
         </form>
