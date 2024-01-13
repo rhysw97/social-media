@@ -5,7 +5,7 @@ import PostComment from "../../components/comments/postComment";
 import Modal from "./../..//components//UI/modal/modal"
 import { USERNAME } from "../../data/contexts";
 import DeletePost from "../../components/DeletePost/DeletePost";
-import EditPost from "../../components/EditPost/EditPost";
+import EditPost from "../../components/EditPost/EditPost"
 
 export default function Post(props) {
     const [commentsModalActive, setCommentsModalActive] = useState(false);

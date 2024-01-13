@@ -63,9 +63,9 @@ export default function PostComment(props) {
                         </div>
                     })}
                 </div>
-                <div className="fixed w-[100%] bottom-0 ">
-                    <textarea className="border-black border-2 w-[70%] text-lg rounded-lg px-2 my-3" placeholder="add comment" ref={commentInputRef}/>
-                    <button onClick={commentOnPost}>Send</button>
+                <div className="fixed flex items-center flex-col w-[100%] bottom-0 left-0 ">
+                    <textarea className="border-black border-2 w-[70%] text-lg rounded-lg" placeholder="add comment" ref={commentInputRef}/>
+                    <button className="button-green w-[50%] border-black border-2" onClick={commentOnPost}>Send</button>
                 </div>
             </div>
         ) 
