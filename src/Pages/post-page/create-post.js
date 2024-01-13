@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Post from './post'
 import { postRequest, getRequest } from '../../utils/server-queries.ts';
-import UserProfile from '../../data/userProfile';
-import Logout from '../../components/Login/logout';
 
 //component to allow user to create a post
 export default function CreatePost() {
@@ -13,7 +11,7 @@ export default function CreatePost() {
     async function newPost(e) {
         if(postInputRef.current.value) {
             const data = {post: postInputRef.current.value}
-            postRequest('posts', data)
+            await postRequest('posts', data)
             postInputRef.current.value = ''
             getRecentPosts()
         }
@@ -37,7 +35,8 @@ export default function CreatePost() {
                 likes: post.likes, 
                 likedBy: post.likedBy, 
                 comments: post.comments,
-                date: post.date
+                date: post.date,
+                profilePicture: post.profilePicture
             }])
         });
     }
@@ -48,7 +47,7 @@ export default function CreatePost() {
                 <h1 className='text-5xl heading'>Feed</h1>
             </header>
             <div className='ml-16'>
-                <div className=" flex flex-col w-[95%]  mx-auto gap-6">
+                <div className=" flex flex-col w-[95%]  mx-auto gap-6  mb-[15%]">
                     {posts.map((post, index) => <Post key={post.id} post={post} />)}
                 </div>
                 <div className ="flex pb-[20px] flex-col items-center mt-10 mx-auto fixed bottom-0 w-[100%] placeholder:text-black bg-green-500">

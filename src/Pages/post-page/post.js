@@ -17,8 +17,9 @@ export default function Post(props) {
     const username = usernameContext
   
     useEffect(() => {
-        
+        console.log(postData)
     }, [])
+
     if(postData.username === username) {
         posterButtons = 
             <div className="flex mb-6 justify-between gap-2">

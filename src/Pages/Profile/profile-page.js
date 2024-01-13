@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react"
 import { getRequest } from "../../utils/server-queries.ts"
+import Modal from "../../components/UI/modal/modal.js"
+import Password from "../register/password.js"
 
 export default function ProfilePage(){
     const [profile, setProfile] = useState({})
+    const [passwordModalActive, setPasswordModalActive] = useState(false)
+    const [password, setPassword] = useState('')
+    
     useEffect(() => {
         getProfile()
     },[])
+
+    async function updatePassword() {
+        
+    }
 
     async function getProfile() { 
         const response = await getRequest('profile/get-profile')
@@ -26,8 +35,16 @@ export default function ProfilePage(){
                 
                 <p>BIO{profile.about}</p>
                 <ol>
-                
-                {/*profile.genres.map((genre, index) => <li key={index}><p>{genre}</p></li>)*/}
+                <p className=" w-[100%] button-green mb-5" onClick={()=> {setPasswordModalActive(true)}}>Change Password</p>
+                <Modal show={passwordModalActive} close={()=> setPasswordModalActive(false)} content={
+                    <div>
+                        
+                        <Password setPasswordState={setPassword} setIsPasswordValid={setCurrentIsValid}/>
+                        <button onClick={updatePassword} className="button-green" type="submit">Submit</button>
+                    </div>
+                    
+                } title={"Change Password"}/>
+                {profile.genres.map((genre, index) => <li key={index}><p>{genre}</p></li>)}
                 
                 </ol>
             </div>

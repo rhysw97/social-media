@@ -9,11 +9,14 @@ function Tags(props) {
 
   
   function removeTag(tag) {
-      setTags(currentValues => {
-        return currentValues.filter(tagToCheck => tagToCheck !== tag)
-      })
-      props.callback(() => tags)
-      props.serverRequest()
+
+    setTags(currentValues => {
+      return currentValues.filter(tagToCheck => tagToCheck !== tag)
+    })
+
+    const localTags = tags
+    props.callback(() => localTags)
+    props.serverRequest()
   }
   
   function addTag() {
@@ -22,7 +25,8 @@ function Tags(props) {
     if(doesTagExist(inputValue)) {
       setTags(currentTags => [... currentTags, inputValue])
       inputRef.current.value = ''
-      props.callback(() => tags)
+      const localTags = tags
+      props.callback(() => localTags)
     }
 
     else {
@@ -36,6 +40,7 @@ function Tags(props) {
         {tags.map((tag, i) =>{ return <li key={i}>
           <p>{tag}</p>
           <p onClick={()=>{
+        
             removeTag(tag)
           }}>x</p>
         </li>})}

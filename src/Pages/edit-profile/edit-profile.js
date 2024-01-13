@@ -2,26 +2,30 @@ import { getRequest, postRequest, formPostRequest } from "../../utils/server-que
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Tags from '../../components/Tags/Tags.js'
+import Modal from "../../components/UI/modal/modal.js";
+import Password from "../register/password.js";
+
 export default function EditProfile() {
         //profile inputs
     const [name, setName] = useState("");
     const [image, setImage] = useState();
     const [bio, setBio] = useState("");
     const [genres, setGenres] = useState([]);
+    const [artists, setArtists] = useState([]);
     const [isFilePicked, setIsFilePicked] = useState(false);
+    
+
+
     useEffect(() => {
-        getGenres()
+        getLikedMusic()
     },[])
     
-    async function getGenres() {
+    async function getLikedMusic() {
         const response = await getRequest('profile/get-profile')
-
+        console.log(response)
         setGenres(() => response.genres)
+        setArtists(() => response.artists)
         
-    }
-
-    function removeItem() {
-
     }
    
     const handleSubmit = (e) => {
@@ -29,12 +33,12 @@ export default function EditProfile() {
         console.log('submitted')
         e.preventDefault();
         console.log(image)
-        const data = {name, image, bio, genres}
         const formData = new FormData()
         formData.append('file', image)
         formData.append('name', name)
         formData.append('bio', bio)
-        formData.append('genres', genres)  
+        formData.append('genres', genres) 
+        formData.append('artists', artists) 
         console.log(formData)
         
         fetch('/profile/edit', {
@@ -95,8 +99,10 @@ export default function EditProfile() {
                 />
 
                 <div>
-                <h2>Pick your favourite Genres</h2>
-                <Tags genres={genres} callback={setGenres} serverCall={removeItem}></Tags>
+                <h2>Add your favourite Genres</h2>
+                <Tags callback={setGenres}></Tags>
+                <h2>Add your favourite Artists</h2>
+                <Tags  callback={setArtists} ></Tags>
                 {console.log(genres)}
                 </div>
                 <button className="button-green" type="submit" >Submit</button>
