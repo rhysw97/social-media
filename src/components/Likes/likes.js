@@ -26,7 +26,6 @@ export default function Likes(props) {
         console.log('username',usernameContext )
         
         if(likedBy.includes(usernameContext)) {
-            console.log("Woah")
             //remove user from likedBy and remove like
             setLikes(currentLikes => currentLikes - 1)
             postRequest('posts/unLikePost', {postId: props.post.id})
@@ -46,12 +45,12 @@ export default function Likes(props) {
 
     return(
         <div>
-            <div className='flex justify-between'>
-                <div className="flex gap-1 button-green w-[30%] justify-center">
-                    <p onClick={handleLikes}>{likeMessage}</p>
+            <div className='flex  justify-between gap-5 mx-[6%]'>
+                <div className="flex gap-1 button-green w-[100%] justify-center" onClick={handleLikes}>
+                    <p >{likeMessage}</p>
                     <p className="">{likes}</p>
                 </div>
-                <LikedBy  className="button-green" likedBy={likedBy}/>
+                <LikedBy  className="button-green " likedBy={likedBy}/>
             </div>
         </div>
     )

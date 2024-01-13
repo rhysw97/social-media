@@ -10,6 +10,7 @@ import EditProfile from './Pages/edit-profile/edit-profile';
 import ProfilePage from './Pages/Profile/profile-page';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Events from './Pages/events/events';
+import CreateEventPost from './Pages/post-page/create-event-post';
 
 //allow user to post
 function App() {
@@ -20,7 +21,14 @@ function App() {
     <BrowserRouter>
       <USERNAME.Provider value={{usernameContext, setUsernameContext}}>
       <LOGGEDIN.Provider value={{loggedInContext, setLoggedInContext}}>
-        <div className="App">
+        <div className='min-h-screen '>
+        <div className="fixed min-h-screen w-screen top-0 left-0" style={{
+                backgroundImage: 'url(https://www.lastminutemusicians.com/how_to_get_gigs/wp-content/uploads/2012/04/Live-gig.jpg)',
+                filter: 'blur(8px)',
+                zIndex: '-10',
+            }}></div>
+            <div className="fixed -z-10 min-h-screen w-screen top-0 left-0 bg-black opacity-40" ></div>
+        <div className="relative mx-auto min-h-screen">
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/register" element={<Register/>} />
@@ -29,9 +37,11 @@ function App() {
                 <Route path="/profile" element={<ProfilePage/>} />
                 <Route path="/edit-profile" element={<EditProfile/>} />
                 <Route path="/events" element={<Events/>} />
+                <Route path="/event-feed" element={<CreateEventPost/>} />
               </Route>
           </Routes>
           <Navbar/>
+        </div>
         </div>
       </LOGGEDIN.Provider>
       </USERNAME.Provider>

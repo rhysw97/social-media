@@ -64,13 +64,6 @@ export default function EditProfile() {
                 required
                 />
                 <div>
-                    <label 
-                        className="
-                            block mb-2 text-sm font-medium 
-                            text-gray-900 dark:text-white
-                        " 
-                        htmlFor="file_input"
-                    >Upload file</label>
 
                     <input
                     className="
@@ -87,6 +80,7 @@ export default function EditProfile() {
                     id="file_input"
                     accept="image/*"
                     onChange={handleChange}
+                    placeholder="Please Upload Profile Image"
                     required
                     />
                 </div>

@@ -111,7 +111,9 @@ export default function Register() {
 
     return(
        <div>
-            <h1 className="heading" >Register</h1>
+            <header className='flex justify-center'>
+                <h1 className='text-5xl heading'>Register</h1>
+            </header>
             <form onSubmit={handleSubmit} className="flex ml-16 w-full gap-4 flex-col items-center">  
             <input
                 placeholder="Username"
