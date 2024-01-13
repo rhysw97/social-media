@@ -23,7 +23,7 @@ function Tags(props) {
     const inputValue = inputRef.current.value
     
     if(doesTagExist(inputValue)) {
-      setTags(currentTags => [... currentTags, inputValue])
+      setTags(currentTags => [...currentTags, inputValue])
       inputRef.current.value = ''
       const localTags = tags
       props.callback(() => localTags)

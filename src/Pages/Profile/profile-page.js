@@ -14,8 +14,9 @@ export default function ProfilePage(){
     },[])
 
     async function updatePassword() {
+        console.log(password)
         if(currentIsValid) {
-            postRequest('/profile/update-password', password)
+            postRequest('/profile/update-password', {password: password})
         } else {
             alert('There was in issue with your password. Please check you have met the password critera')
         }
@@ -49,7 +50,8 @@ export default function ProfilePage(){
                     </div>
                     
                 } title={"Change Password"}/>
-                {profile.genres.map((genre, index) => <li key={index}><p>{genre}</p></li>)}
+                {}
+                {/*profile.genres.map((genre, index) => <li key={index}><p>{genre}</p></li>)*/}
                 
                 </ol>
             </div>

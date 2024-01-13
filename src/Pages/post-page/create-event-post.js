@@ -33,9 +33,10 @@ export default function CreateEventPost() {
     
         const serverPosts = await postRequest('posts/eventPosts', {id: id})
         
-        setPosts([])
+        setPosts(() => [])
+        const postList = []
         serverPosts.forEach(post => {
-            setPosts(currentPosts => [...currentPosts, {
+           postList.push({
                 id: post._id, 
                 username: post.postedBy, 
                 content: post.message,
@@ -44,8 +45,10 @@ export default function CreateEventPost() {
                 comments: post.comments,
                 date: post.date,
                 eventId: id
-            }])
+            })
         });
+
+        setPosts(() => [...postList])
     }
 
     return(

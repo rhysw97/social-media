@@ -37,8 +37,7 @@ export default function Likes(props) {
             //add user to likedBy and add like
             setLikes(currentLikes => currentLikes + 1)
             postRequest('posts/likePost', {postId: props.post.id})
-            setLikedBy(() => [...likedBy, usernameContext])
-            console.log(likedBy)
+            setLikedBy(currentLikedBy => [...currentLikedBy, usernameContext])
             setLikeMessage('Unlike')
         }
     }
@@ -50,7 +49,7 @@ export default function Likes(props) {
                     <p >{likeMessage}</p>
                     <p className="">{likes}</p>
                 </div>
-                <LikedBy  className="button-green " likedBy={likedBy}/>
+                <LikedBy  className="button-green" likedBy={likedBy}/>
             </div>
         </div>
     )
