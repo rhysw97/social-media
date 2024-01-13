@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getRequest } from "../../utils/server-queries.ts"
+import { getRequest, postRequest } from "../../utils/server-queries.ts"
 import Modal from "../../components/UI/modal/modal.js"
 import Password from "../register/password.js"
 
@@ -7,13 +7,18 @@ export default function ProfilePage(){
     const [profile, setProfile] = useState({})
     const [passwordModalActive, setPasswordModalActive] = useState(false)
     const [password, setPassword] = useState('')
+    const [currentIsValid, setCurrentIsValid] = useState(false)
     
     useEffect(() => {
         getProfile()
     },[])
 
     async function updatePassword() {
-        
+        if(currentIsValid) {
+            postRequest('/profile/update-password', password)
+        } else {
+            alert('There was in issue with your password. Please check you have met the password critera')
+        }
     }
 
     async function getProfile() { 
